@@ -38,7 +38,7 @@ function ListarClientes(){
 						$arrCliente[$i]["estado"] = '<span class="badge badge-danger">Inactivo</span>';
 					}
 
-                    $btnView = '<button class="editarcliente btn btn-dark btn-sm" onClick="Deshabilitarcliente(' . $arrCliente[$i]['id_cliente'] . ')" title="Deshabilitar Cliente"><i class="ni ni-ui-04"></i></button>';
+                    $btnView = '<button class="editarcliente btn btn-success btn-sm" onClick="Deshabilitarcliente(' . $arrCliente[$i]['id_cliente'] . ')" title="Deshabilitar Cliente"><i class="ni ni-ui-04"></i></button>';
                     $btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="editardatoscliente(' . $arrCliente[$i]['id_cliente'] . ')" title="Editar Cliente"><i class="ni ni-settings"></i></button>';
 						
 				

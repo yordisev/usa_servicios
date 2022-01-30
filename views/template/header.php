@@ -79,6 +79,36 @@
                 <span class="nav-link-text">Clientes</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-users text-blue"></i>
+                <span class="nav-link-text">Empleados</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-users text-blue"></i>
+                <span class="nav-link-text">Ingresos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-users text-blue"></i>
+                <span class="nav-link-text">Pagos Realizados</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-users text-blue"></i>
+                <span class="nav-link-text">Servicios</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-users text-blue"></i>
+                <span class="nav-link-text">Servicios a Realizar</span>
+              </a>
+            </li>
           </ul>
        
         </div>
