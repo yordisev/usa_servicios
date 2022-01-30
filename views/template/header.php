@@ -1,43 +1,119 @@
 <?php 
-	require_once ("../../config/config.php");
+	const BASE_URL = "http://localhost/usa_servicios/";
+	require_once('../../models/sessiones.php');
  ?>
+
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-	<title>Listado de personas</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template</title>
+  <!-- Favicon -->
+  <link rel="icon" href="<?= BASE_URL ?>assets/img/brand/favicon.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+   <!-- datatable -->
+   <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/argon.css?v=1.1.0" type="text/css">
 </head>
+
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <div class="container-fluid">
-		    <a class="navbar-brand" href="<?= BASE_URL ?>">Sistema Tareas</a>
-		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-		        <li class="nav-item">
-		          <a class="nav-link active" aria-current="page" href="<?= BASE_URL ?>">Inicio</a>
-		        </li>
-		        <li class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		            Persona
-		          </a>
-		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="#">Ver personas</a></li>
-		            <li><a class="dropdown-item" href="#">Registrar persona</a></li>
-		          </ul>
-		        </li>
-		      </ul>
-		      <form id="frmSearch" class="d-flex">
-		        <input class="form-control me-2" type="search" id="txtBuscar" name="txtBuscar" placeholder="Buscar">
-		        <button class="btn btn-outline-success" type="submit">Buscar</button>
-		      </form>
-		    </div>
-		  </div>
-		</nav>
-	</header>
+  <!-- Sidenav -->
+  <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header d-flex align-items-center">
+        <a class="navbar-brand" href="<?= BASE_URL ?>pages/dashboards/dashboard.html">
+          <img src="<?= BASE_URL ?>assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        </a>
+        <div class="ml-auto">
+          <!-- Sidenav toggler -->
+          <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+            <div class="sidenav-toggler-inner">
+              <i class="sidenav-toggler-line"></i>
+              <i class="sidenav-toggler-line"></i>
+              <i class="sidenav-toggler-line"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+                <i class="ni ni-shop text-primary"></i>
+                <span class="nav-link-text">Dashboards</span>
+              </a>
+              <div class="collapse show" id="navbar-dashboards">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="<?= BASE_URL ?>views/inicio/" class="nav-link">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= BASE_URL ?>pages/dashboards/alternative.html" class="nav-link">Alternative</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE_URL ?>views/usuarios/">
+                <i class="ni ni-calendar-grid-58 text-red"></i>
+                <span class="nav-link-text">Usuarios</span>
+              </a>
+            </li>
+          </ul>
+       
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+          <ul class="navbar-nav align-items-center ml-md-auto">
+          </ul>
+          <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                  </span>
+                  <div class="media-body ml-2 d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#!" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="../../index.php?cerrar_sesion=true" onclick="Logout()" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+ 
