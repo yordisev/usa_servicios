@@ -69,8 +69,14 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>views/usuarios/">
-                <i class="ni ni-calendar-grid-58 text-red"></i>
+                <i class="ni ni-circle-08 text-blue"></i>
                 <span class="nav-link-text">Usuarios</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE_URL ?>views/clientes/">
+                <i class="fa fa-users text-blue"></i>
+                <span class="nav-link-text">Clientes</span>
               </a>
             </li>
           </ul>

@@ -16,7 +16,7 @@
         <div class="col">
           <div class="card">
             <!-- Card header -->
-            <div class="card-header"><h3 class="mb-0">Usuarios del Sistema <button type="button" data-toggle="modal" data-target="#modal-add-usuario" class="btn btn-primary btn-neutral float-right">Agregar</button></h3></div>
+            <div class="card-header"><h3 class="mb-0">Usuarios del Sistema <button type="button" onclick="modalagregar()" class="btn btn-primary btn-neutral float-right">Agregar</button></h3></div>
             <?php include("FormUsuarios.php");?>
             <div class="table-responsive py-4">
               <table class="table table-flush" id="TablaUsuarios">

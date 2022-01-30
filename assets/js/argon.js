@@ -1851,7 +1851,7 @@ var Scrollbar = (function() {
 	// Methods
 
 	function init() {
-		$scrollbar.scrollbar().scrollLock()
+		// $scrollbar.scrollbar().scrollLock()
 	}
 
 

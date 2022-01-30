@@ -41,8 +41,8 @@ function ObtenerUsu($id){
 
 function EditaUsuario($json){
     require_once('../config/config.php');
-    $query = $mysqli->prepare("UPDATE usuarios SET tipo_doc = ?, nombres = ?, apellidos = ? WHERE  numero_doc = ?");
-    $query->bind_param("ssss", $json->tipoDoc, $json->nombres, $json->apellidos, $json->numDoc);
+    $query = $mysqli->prepare("UPDATE usuarios SET tipo_doc = ?, usuario = ?, nombres = ?, apellidos = ? WHERE  numero_doc = ?");
+    $query->bind_param("sssss", $json->tipoDoc, $json->usuario, $json->nombres, $json->apellidos, $json->numDoc);
     $query->execute();
     $id_registro = $query->affected_rows;
 

@@ -1,5 +1,3 @@
-console.log("registro");
-
 ListadoUsuarios();
 
 function ListadoUsuarios() {
@@ -40,7 +38,7 @@ function ValidarForm(User, tipo) {
     var exprNum = /^([0-9])*$/;
     var Validador = false;
     if (tipo == 1) {
-        document.querySelectorAll("#formulario .form-control").forEach(e => {
+        document.querySelectorAll("#registrar_usuario .form-control").forEach(e => {
             if (!e.value) {
                 Validador = true;
             }
@@ -75,7 +73,7 @@ function ValidarForm(User, tipo) {
     return true;
 }
 
-function Guardar() {
+function GuardarUsuario() {
     var User = {
         tipoDoc: document.getElementsByName('tipoDoc')[0].value,
         numDoc: document.getElementsByName('numDoc')[0].value,
@@ -108,7 +106,7 @@ function Guardar() {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    $('#formulario')[0].reset();
+                    $('#registrar_usuario')[0].reset();
                     jQuery.noConflict();
                     $('.bd-example-modal-lg').modal('hide');
                     ListadoUsuarios();
@@ -128,49 +126,45 @@ function Guardar() {
     }
 }
 
-function fntGuardar() {
-
-    document.querySelector(".modal-title").innerHTML = "Guardar Usuario";
-    document.querySelector(".modal-header").classList.replace("box-primary", "box-success");
-    $("#btnUsuAct").hide();
-    $("#btnUsuGuar").show();
+function modalagregar() {
+    $('#registrar_usuario')[0].reset();
+    document.querySelector(".modal-title").innerHTML = "Agregar Usuario";
+    document.getElementById("botondeeditar").classList.replace("btn-success", "btn-primary");
+    document.querySelector("#btnText").innerHTML = "GUARDAR";
+    document.getElementById('botondeeditar').onclick = GuardarUsuario;
+    document.getElementById("usuarioclasemd12").classList.replace("col-md-12", "col-md-6");
+    $("#passwordhide").show();
     $("contrasena").removeAttr('disabled');
-    $("usuario").removeAttr('disabled');
-    $("#usuPass").show();
-    $('#formulario')[0].reset();
+    $('#modal-add-usuario').modal('show');
 }
 
-function fntEditUsuario(i) {
+function fntEditUsuario(idusuario) {
     document.querySelector(".modal-title").innerHTML = "Actualizar Usuario";
-    document.querySelector(".modal-header").classList.replace("box-primary", "box-success");
-    $("#btnUsuAct").show();
-    $("#btnUsuGuar").hide();
-    $("#usuPass").hide();
+    document.getElementById("botondeeditar").classList.replace("btn-primary", "btn-success");
+    document.getElementById("usuarioclasemd12").classList.replace("col-md-6", "col-md-12");
+    $("#passwordhide").hide();
+    $("contrasena").attr('disabled', 'disabled');
+    document.querySelector("#btnText").innerHTML = "ACTUALIZAR";
+    document.getElementById('botondeeditar').onclick = ActualizarUsuario;
     $.ajax({
         method: 'POST',
         datatype: 'json',
         data: {
             'function': 'ObtenerUsuario',
-            'datos': i
+            'datos': idusuario
         },
         url: '/usa_servicios/controllers/Usuarios.php',
     })
         .then(function (response) {
             var Data = JSON.parse(response);
-            console.log(Data[0]);
             if (response != 'Error') {
-                $("#contrasena").attr('disabled', 'disabled');
-                $("#usuario").attr('disabled', 'disabled');
-                // $("#numDoc").attr('disabled', 'disabled');
                 document.getElementsByName('tipoDoc')[0].value = Data[0].tipo_doc;
                 document.getElementsByName('numDoc')[0].value = Data[0].numero_doc;
                 document.getElementsByName('nombres')[0].value = Data[0].nombres;
                 document.getElementsByName('apellidos')[0].value = Data[0].apellidos;
                 document.getElementsByName('usuario')[0].value = Data[0].usuario;
-                jQuery.noConflict();
-                $('.bd-example-modal-lg').modal('show');
+                $('#modal-add-usuario').modal('show');
 
-                // $('.bd-example-modal-lg').hide('hide');
             } else {
                 Swal.fire({
                     title: 'Notificacion!',
@@ -184,7 +178,7 @@ function fntEditUsuario(i) {
         });
 }
 
-function Actualizar() {
+function ActualizarUsuario() {
     var User = {
         tipoDoc: document.getElementsByName('tipoDoc')[0].value,
         numDoc: document.getElementsByName('numDoc')[0].value,
@@ -217,9 +211,7 @@ function Actualizar() {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    jQuery.noConflict();
-                    $('.bd-example-modal-lg').modal('hide');
-                    // $('.bd-example-modal-lg').hide('hide');
+                    $('#modal-add-usuario').modal('hide');
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',

@@ -31,17 +31,18 @@
 		const base_url = "<?= BASE_URL ?>";
 	</script>
 <script src="<?= BASE_URL ?>assets/js/sweetalert.min.js"></script>
- <!-- Core -->
- <script src="<?= BASE_URL ?>assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="<?= BASE_URL ?>assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= BASE_URL ?>assets/vendor/js-cookie/js.cookie.js"></script>
-  <!-- datatable -->
-  <script src="<?= BASE_URL ?>assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="<?= BASE_URL ?>assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <!-- Argon JS -->
-  <script src="<?= BASE_URL ?>assets/js/argon.js?v=1.1.0"></script>
-  <!-- Demo JS - remove this in your project -->
-  <script src="<?= BASE_URL ?>assets/js/demo.min.js"></script>
+<!-- Core -->
+<script src="<?= BASE_URL ?>assets/js/jquery-3.6.0.min.js"></script>
+<!-- <script src="<?= BASE_URL ?>assets/vendor/jquery/dist/jquery.min.js"></script> -->
+<script src="<?= BASE_URL ?>assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= BASE_URL ?>assets/vendor/js-cookie/js.cookie.js"></script>
+<!-- datatable -->
+<script src="<?= BASE_URL ?>assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?= BASE_URL ?>assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Argon JS -->
+<script src="<?= BASE_URL ?>assets/js/argon.js?v=1.1.0"></script>
+<!-- Demo JS - remove this in your project -->
+<script src="<?= BASE_URL ?>assets/js/demo.min.js"></script>
 </body>
 
 </html>

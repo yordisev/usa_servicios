@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.4.22-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.4.11-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
 -- HeidiSQL Versión:             11.3.0.6295
 -- --------------------------------------------------------
@@ -20,11 +20,38 @@ USE `servicios_db`;
 -- Volcando estructura para tabla servicios_db.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tipo_doc` varchar(5) DEFAULT NULL,
+  `numero_doc` int(11) DEFAULT NULL,
+  `p_nombre` varchar(30) DEFAULT NULL,
+  `s_nombre` varchar(30) DEFAULT NULL,
+  `p_apellido` varchar(30) DEFAULT NULL,
+  `s_apellido` varchar(30) DEFAULT NULL,
+  `telefono` int(11) DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL,
+  `referido` varchar(50) DEFAULT NULL,
+  `cedula_ref` int(11) DEFAULT NULL,
+  `telefono_ref` int(11) DEFAULT NULL,
+  `estado` varchar(2) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  PRIMARY KEY (`id_cliente`) USING BTREE,
+  UNIQUE KEY `numero_doc` (`numero_doc`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.clientes: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.clientes: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` (`id_cliente`, `tipo_doc`, `numero_doc`, `p_nombre`, `s_nombre`, `p_apellido`, `s_apellido`, `telefono`, `direccion`, `referido`, `cedula_ref`, `telefono_ref`, `estado`, `fecha_registro`) VALUES
+	(1, 'CC', 24234, 'emil', 'nombre', 'primera', 'segundo', 319210920, 'calle 45 # 32-45', 'carlos freile', 31313, 31313, 'A', '2022-01-17'),
+	(2, 'CC', 2148124, 'DGSDG', 'ASDGSDG', 'SDGSDG', 'SDGSDG', 232523, 'DS', 'ASFASF', 2352, 325235, 'A', '2022-01-17'),
+	(3, 'CC', 234234, 'dsgsdgs', 'sdgsdg', 'sdgsdg', 'sdgsdg', 25235, 'dgsdgdsg', 'sdhsdh', 46346, 436346, 'A', '2022-01-17'),
+	(16, 'CC', 14812498, 'nata', 'isabel', 'perez', 'tejeda', 24832798, 'calle 54 # 32', 'carla', 24324324, 2347980, 'A', '2022-01-18'),
+	(17, 'CC', 12345, 'carlos', 'jiraldo', 'sobrino', 'escorcia', 234327407, 'carrera 455', 'usted', 35798797, 987907987, 'A', '2022-01-18'),
+	(18, 'CC', 987654321, 'avis', 'manuel', 'canate', 'perez', 2147483647, 'calle 23 # 32-11', 'talivan', 123434223, 2147483647, 'I', '2022-01-19'),
+	(19, 'CC', 2138127, 'prueeab3', 'pruebaas', 'prueba323', 'prueba3287', 37131313, 'calle65', 'nuevorefe', 1212312312, 313131313, NULL, '2022-01-19'),
+	(20, 'CC', 91919191, 'pablo', 'emilio', 'ariza', 'acuna', 300000002, 'calle 99', 'yefe', 1043333333, 313313313, 'I', '2022-01-19'),
+	(21, 'CC', 1231313123, 'pacho', 'aguilar', 'ramos', 'ramos', 324242424, 'calle8787', 'emil', 1023565666, 321321321, 'A', '2022-01-19'),
+	(22, 'CC', 1271273197, 'carlos', 'alfonso', 'romero', 'carrascal', 311311311, 'calle 22-12', 'ingrid', 10101010, 300300300, 'A', '2022-01-19'),
+	(23, 'CC', 12, 'fj', 'jfjhf', 'kjffg', 'dh', 8768796, 'khjkhl', 'jkjg', 798797, 6544786, NULL, '2022-01-19'),
+	(24, 'CC', 9999999, 'yyyyyy', 'tttttt', 'rrrrrrr', 'dddddd', 787878787, 'calle 45 # 32-45', 'uuuuuuu', 13333333, 6556566, NULL, '2022-01-19');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.empleados
@@ -112,6 +139,34 @@ CREATE TABLE IF NOT EXISTS `servicios_a_realizar_trabajadore` (
 -- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` DISABLE KEYS */;
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` ENABLE KEYS */;
+
+-- Volcando estructura para tabla servicios_db.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_doc` varchar(50) DEFAULT NULL,
+  `numero_doc` int(11) DEFAULT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `nombres` varchar(100) DEFAULT NULL,
+  `apellidos` varchar(100) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL,
+  `estado` varchar(60) DEFAULT 'A',
+  `fecha_registro` timestamp NULL DEFAULT NULL,
+  `editado` datetime DEFAULT NULL,
+  `nivel` int(11) DEFAULT 1,
+  PRIMARY KEY (`id_admin`) USING BTREE,
+  UNIQUE KEY `usuario` (`usuario`) USING BTREE,
+  UNIQUE KEY `numero_doc` (`numero_doc`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla servicios_db.usuarios: 4 rows
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`id_admin`, `tipo_doc`, `numero_doc`, `usuario`, `nombres`, `apellidos`, `password`, `estado`, `fecha_registro`, `editado`, `nivel`) VALUES
+	(3, 'TI', 1234, 'dairo@redes.com', 'Dairo Rafael', 'Barrios Ramos', '$2y$12$nuYWSX12NkjZ99T35a0KnudJKyM7d.7o9u4pXTz2vElQuYQlBWHUq', 'A', NULL, NULL, 1),
+	(5, 'CC', 123456, 'yordis@redes.com', 'Yordis', 'Escorcia', '$2y$12$5keXTBZQhRWC9RddHhs/IOTeVGaqFbXD6zKCmsYxi3ODDUCZulh9W', 'A', NULL, NULL, 1),
+	(6, 'CC', 987654, 'regina@redes.com', 'Regina Marina', 'TRILLO PRUEBA', '$2y$12$9aybpvrXNTT/Qf2JjmrHMulOQOAhE5XBquZc.DIROCzB8VssEoO6q', 'A', NULL, NULL, 1),
+	(7, 'CC', 12345, 'carlos@redes.com', 'Carlos', 'Sobrino', '$2y$12$PEgV1VqS.z3T0yMIQ24NwuMXE9vFY1cOksU5amGOtsChjv7teFDjG', 'A', NULL, NULL, 3),
+	(8, 'TI', 123, 'angie@redes.com', 'angie', 'Escorcia Vasquez', '$2y$12$tz/CAxQvS7sWR8nJGQ5eb.vEWkAzgrIoOYEQf48b5OZQ5HHLPa8PG', 'A', NULL, NULL, 1);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
