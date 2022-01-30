@@ -22,8 +22,8 @@ function LoginModel($json)
                     $_SESSION['tipo_doc'] = $tipoDoc;
                     $_SESSION['numero_doc'] = $numDoc;
                     $_SESSION['estado'] = $estado;
-                    $response = array('status' => 'Exito', 'data' => $nivel);
-                    // $response = 'Exito';
+                    // $response = array('status' => 'Exito', 'data' => $nivel);
+                    $response = 'Exito';
                 }
             } else {
                 $response = "Error";

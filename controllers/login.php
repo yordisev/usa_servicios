@@ -18,8 +18,9 @@ function Login(){
         $response = 'Debe diligenciar todos los campos';
     }
 
-    $response = array('status' => 'Exito', 'data' => $response);
-    echo json_encode($response);
+    // $response = array('status' => 'Exito', 'data' => $response);
+    echo $response;
+    // echo json_encode($response);
 }
 
 function Logout() {

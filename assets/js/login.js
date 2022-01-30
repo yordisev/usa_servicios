@@ -56,9 +56,8 @@ function Login() {
                 },
                 url: '/usa_servicios/controllers/login.php',
             }).then(function(response) {
-                var datos = JSON.parse(response);
-                console.log(datos);
-                if (datos.data != '' || datos.data != null) {
+                // var datos = JSON.parse(response);
+                if (response == 'Exito') {
                     Swal.fire({
                         title: 'Notificacion!',
                         position: 'center',
