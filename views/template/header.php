@@ -99,7 +99,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="<?= BASE_URL ?>views/servicios/">
                 <i class="ni ni-delivery-fast text-orange"></i>
                 <span class="nav-link-text">Servicios</span>
               </a>

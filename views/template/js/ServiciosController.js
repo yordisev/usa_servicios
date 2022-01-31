@@ -4,41 +4,41 @@ llamarservicios();
 
 function llamarclientes() {
     $.ajax({
-      method: "POST",
-      datatype: "json",
-      data: {
-        function: "llamarclientes"
-      },
-      url: "/usa_servicios/controllers/ServiciosaRealizar.php",
+        method: "POST",
+        datatype: "json",
+        data: {
+            function: "llamarclientes"
+        },
+        url: "/usa_servicios/controllers/ServiciosaRealizar.php",
     }).then(function (response) {
         var datos = JSON.parse(response);
-      if (datos.status == true) {
-        for (var i = 0; i < datos.data.length; i++) {
-            document.getElementById("clienteservicio").innerHTML += "<option value='"+datos.data[i].numero_doc+"'>"+datos.data[i].cliente+"</option>";
-        
+        if (datos.status == true) {
+            for (var i = 0; i < datos.data.length; i++) {
+                document.getElementById("clienteservicio").innerHTML += "<option value='" + datos.data[i].numero_doc + "'>" + datos.data[i].cliente + "</option>";
+
+            }
         }
-      }
     });
-  }
-  
-  function llamarservicios() {
+}
+
+function llamarservicios() {
     $.ajax({
-      method: "POST",
-      datatype: "json",
-      data: {
-        function: "llamarservicios"
-      },
-      url: "/usa_servicios/controllers/ServiciosaRealizar.php",
+        method: "POST",
+        datatype: "json",
+        data: {
+            function: "llamarservicios"
+        },
+        url: "/usa_servicios/controllers/ServiciosaRealizar.php",
     }).then(function (response) {
-      var datos = JSON.parse(response);
-      console.log(datos);
-      if (datos.status == true) {
-        for (var i = 0; i < datos.data.length; i++) {
-            document.getElementById("servicionombre").innerHTML += "<option value='"+datos.data[i].id_servicio+"'>"+datos.data[i].nombre+"</option>";
+        var datos = JSON.parse(response);
+        console.log(datos);
+        if (datos.status == true) {
+            for (var i = 0; i < datos.data.length; i++) {
+                document.getElementById("servicionombre").innerHTML += "<option value='" + datos.data[i].id_servicio + "'>" + datos.data[i].nombre + "</option>";
+            }
         }
-      }
     });
-  }
+}
 
 function TablaServiciosaRealizar() {
     document.querySelector("#TablaServiciosaRealizar");
@@ -65,12 +65,13 @@ function TablaServiciosaRealizar() {
             { "data": "fecha_fin" },
             { "data": "total_a_pagar" },
             { "data": "fecha" },
-            { "data": "estado_servico" },
+            { "data": "estado_servicio" },
             { "data": "options" },
         ]
     });
     $('#TablaServiciosaRealizar > tbody').html(table);
 }
+
 
 
 function ValidarForm(nuevoservicio, tipo) {
@@ -83,17 +84,6 @@ function ValidarForm(nuevoservicio, tipo) {
                 Validador = true;
             }
         });
-    }
-
-    if (Validador == false) {
-        if (!exprNum.test(nuevoservicio.numDoc)) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Advertencia!',
-                text: 'El campo numero de documento permite solo numeros',
-            });
-            return false;
-        }
     } else {
         Swal.fire({
             icon: 'warning',
@@ -139,9 +129,7 @@ function GuardarServiciorealizar() {
                         timer: 1500
                     });
                     $('#registratnuevoservicio')[0].reset();
-                    jQuery.noConflict();
-                    $('.bd-example-modal-lg').modal('hide');
-                    ListadoUsuarios();
+                    $('#modal-add-nuevoservicio').modal('hide');
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -164,37 +152,37 @@ function modalagregar() {
     document.getElementById("botondeeditar").classList.replace("btn-success", "btn-primary");
     document.querySelector("#btnText").innerHTML = "REGISTRAR SERVICIO A REALIZAR";
     document.getElementById('botondeeditar').onclick = GuardarServiciorealizar;
-    // document.getElementById("usuarioclasemd12").classList.replace("col-md-12", "col-md-6");
-    // $("#passwordhide").show();
-    // $("contrasena").removeAttr('disabled');
     $('#modal-add-nuevoservicio').modal('show');
 }
 
-function fntEditUsuario(idusuario) {
+function editardatosservicio(id_servicio) {
     document.querySelector(".modal-title").innerHTML = "ACTUALIZAR ESTE SERVICIO";
     document.getElementById("botondeeditar").classList.replace("btn-primary", "btn-success");
-    // document.getElementById("usuarioclasemd12").classList.replace("col-md-6", "col-md-12");
-    // $("#passwordhide").hide();
-    // $("contrasena").attr('disabled', 'disabled');
     document.querySelector("#btnText").innerHTML = "ACTUALIZAR";
     document.getElementById('botondeeditar').onclick = ActualizarServiciorealizar;
     $.ajax({
         method: 'POST',
         datatype: 'json',
         data: {
-            'function': 'ObtenerUsuario',
-            'datos': idusuario
+            'function': 'Obtenerdatodeservicio',
+            'datos': id_servicio
         },
-        url: '/usa_servicios/controllers/Usuarios.php',
+        url: '/usa_servicios/controllers/ServiciosaRealizar.php',
     })
         .then(function (response) {
             var Data = JSON.parse(response);
+            console.log(Data);
             if (response != 'Error') {
-                document.getElementsByName('tipoDoc')[0].value = Data[0].tipo_doc;
-                document.getElementsByName('numDoc')[0].value = Data[0].numero_doc;
-                document.getElementsByName('nombres')[0].value = Data[0].nombres;
-                document.getElementsByName('apellidos')[0].value = Data[0].apellidos;
-                document.getElementsByName('usuario')[0].value = Data[0].usuario;
+                for (var i = 0; i < Data.data.length; i++) {
+                    document.getElementsByName("clienteservicio").innerHTML += "<option value='" + Data.data[i].numero_doc + "'>" + Data.data[i].cliente + "</option>";
+                    // document.getElementsByName("servicionombre").innerHTML += "<option value='" + Data.data[i].id_servicio + "'>" + Data.data[i].nombre + "</option>";
+    
+                }
+                document.getElementById('servicionombre')[0].value = Data.data.nombre;
+                document.getElementsByName('fechainicio')[0].value = Data.data.fecha_inicio;
+                document.getElementsByName('horainicio')[0].value = Data.data.hora_inicio;
+                document.getElementsByName('fechafin')[0].value = Data.data.fecha_fin;
+                document.getElementsByName('horafin')[0].value = Data.data.hora_fin;
                 $('#modal-add-nuevoservicio').modal('show');
 
             } else {

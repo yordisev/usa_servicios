@@ -17,7 +17,7 @@
                    <div class="form-group">
                      <label><strong>CLIENTE</strong></label>
                      <select class="form-control" name="clienteservicio" id="clienteservicio">
-                       <option value="" readonly>Seleccionar Cliente</option>
+                       <option  readonly>Seleccionar Cliente</option>
                      </select>
                    </div>
                  </div>
@@ -40,7 +40,7 @@
                  <div class="col-md-6">
                    <div class="form-group">
                      <label><strong>HORA DE INICIO</strong></label>
-                     <input type="text" class="form-control" name="horainicio" id="horainicio">
+                     <input type="time" class="form-control" name="horainicio" id="horainicio">
                    </div>
                  </div>
                </div>
@@ -54,7 +54,7 @@
                  <div class="col-md-6">
                  <div class="form-group">
                      <label><strong>HORA DE FINALIZACION</strong></label>
-                     <input type="text" class="form-control" name="horafin" id="horafin">
+                     <input type="time" class="form-control" name="horafin" id="horafin">
                    </div>
                    </div>
                </div>

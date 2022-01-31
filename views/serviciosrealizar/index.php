@@ -16,9 +16,8 @@
         <div class="col">
           <div class="card">
             <!-- Card header -->
-            <div class="card-header"><h3 class="mb-0">Servicios a Realizar <button type="button" onclick="Servicios()" class="btn btn-success">Servicios</button> <button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Nuevo Pedido</button></h3></div>
+            <div class="card-header"><h3 class="mb-0">Servicios a Realizar<button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Nuevo Pedido</button></h3></div>
             <?php include("FormServiciosRealizar.php");?>
-            <?php include("servicios.php");?>
             <div class="table-responsive py-4">
               <table class="table table-flush" id="TablaServiciosaRealizar">
                 <thead class="thead-light">

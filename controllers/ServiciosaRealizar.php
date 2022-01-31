@@ -31,21 +31,21 @@ function llamarservicios(){
             die();
 }
 
-// function EditarEmpleado1(){
-//     require_once('../models/EmpleadosModel.php');
-//     $json = json_decode($_POST['datos']);
-//     $idempleado = intval($json);
-//     if($idempleado > 0){
-//             $arraData = selectEmpleado($json);
-//             if(empty($arraData)){
-//                 $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados');
-//             }else{
-//                 $arrResponse = array('status' => true, 'data' => $arraData);
-//             }
-//             echo json_encode($arrResponse);
-//         }
-//         die();
-// }
+function Obtenerdatodeservicio(){
+    require_once('../models/ServiciosarealizarModel.php');
+    $json = json_decode($_POST['datos']);
+    $idservicio = intval($json);
+    if($idservicio > 0){
+            $arraData = selectservicio($json);
+            if(empty($arraData)){
+                $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados');
+            }else{
+                $arrResponse = array('status' => true, 'data' => $arraData);
+            }
+            echo json_encode($arrResponse);
+        }
+        die();
+}
 
 function ListarServiciosarealizar(){
     require_once('../models/ServiciosarealizarModel.php');
@@ -56,15 +56,15 @@ function ListarServiciosarealizar(){
 				   $btnView = "";
 					$btnEdit = "";
 
-					if($arrservicios[$i]["estado_servico"] == "A")
+					if($arrservicios[$i]["estado_servicio"] == "A")
 					{
-						$arrservicios[$i]["estado_servico"] = '<span class="badge badge-primary">Activo</span>';
+						$arrservicios[$i]["estado_servicio"] = '<span class="badge badge-primary">Activo</span>';
 					}else{
-						$arrservicios[$i]["estado_servico"] = '<span class="badge badge-danger">Inactivo</span>';
+						$arrservicios[$i]["estado_servicio"] = '<span class="badge badge-danger">Inactivo</span>';
 					}
 
                     $btnView = '<button class="editarcliente btn btn-success btn-sm" onClick="Deshabilitarempleado(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Deshabilitar Empleado">Agregar Empleados</button>';
-                    $btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="editardatosempleado(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
+                    $btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="editardatosservicio(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
 						
 				
 				

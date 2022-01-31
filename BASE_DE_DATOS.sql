@@ -128,34 +128,46 @@ CREATE TABLE IF NOT EXISTS `servicios` (
   `id_servicio` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
   `cobro_por_hora` int(11) DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_servicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` (`id_servicio`, `nombre`, `cobro_por_hora`) VALUES
-	(1, 'Limpieza Ventanas', 20),
-	(2, 'Limpieza Piscina', 50),
-	(3, 'Limpieza Casa', 100);
+INSERT INTO `servicios` (`id_servicio`, `nombre`, `cobro_por_hora`, `estado`) VALUES
+	(1, 'Limpieza Ventanas', 20, 'A'),
+	(2, 'Limpieza Piscina', 50, 'I'),
+	(3, 'Limpieza Casa', 235234, 'A'),
+	(4, 'prueba', 500, 'A');
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.servicios_a_realizar
 CREATE TABLE IF NOT EXISTS `servicios_a_realizar` (
-  `id_ser_rea` int(11) DEFAULT NULL,
+  `id_ser_rea` int(11) NOT NULL AUTO_INCREMENT,
   `cliente` int(11) DEFAULT NULL,
   `servicio` varchar(50) DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
+  `hora_inicio` time DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL,
+  `hora_fin` time DEFAULT NULL,
   `total_a_pagar` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `estado_servico` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `estado_servicio` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_ser_rea`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios_a_realizar: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios_a_realizar: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar` DISABLE KEYS */;
-INSERT INTO `servicios_a_realizar` (`id_ser_rea`, `cliente`, `servicio`, `fecha_inicio`, `fecha_fin`, `total_a_pagar`, `fecha`, `estado_servico`) VALUES
-	(1, 24234, '1', '2022-01-31', '2022-01-31', 200, '2022-01-31', 'A'),
-	(2, 24234, '2', '2022-01-31', '2022-01-31', 300, '2022-01-31', 'A');
+INSERT INTO `servicios_a_realizar` (`id_ser_rea`, `cliente`, `servicio`, `fecha_inicio`, `hora_inicio`, `fecha_fin`, `hora_fin`, `total_a_pagar`, `fecha`, `estado_servicio`) VALUES
+	(1, 24234, '1', '2022-01-31', NULL, '2022-01-31', NULL, 200, '2022-01-31', 'A'),
+	(2, 24234, '2', '2022-01-31', NULL, '2022-01-31', NULL, 300, '2022-01-31', 'A'),
+	(3, 12345, '3', '2022-01-21', '14:30:00', '2022-01-28', '14:30:00', NULL, '2022-01-31', 'A'),
+	(4, 987654321, '3', '2022-01-21', '14:39:00', '2022-01-31', '14:38:00', NULL, '2022-01-31', 'A'),
+	(5, 1271273197, '3', '2022-01-13', '14:45:00', '2022-01-19', '14:44:00', NULL, '2022-01-31', 'A'),
+	(6, 1271273197, '2', '2022-01-11', '14:45:00', '2022-01-27', '14:44:00', NULL, '2022-01-31', 'A'),
+	(7, 2138127, '2', '2022-01-06', '14:48:00', '2022-01-19', '14:47:00', NULL, '2022-01-31', 'A'),
+	(10, 12345, '2', '2022-01-26', '14:51:00', '2022-01-31', '14:48:00', NULL, '2022-01-31', 'A'),
+	(11, 24234, '2', '2022-01-13', '18:48:00', '2022-01-31', '14:50:00', NULL, '2022-01-31', 'A');
 /*!40000 ALTER TABLE `servicios_a_realizar` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.servicios_a_realizar_trabajadore
