@@ -76,7 +76,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>views/clientes/">
-                <i class="fa fa-users text-blue"></i>
+                <i class="fa fa-users text-orange"></i>
                 <span class="nav-link-text">Clientes</span>
               </a>
             </li>
@@ -88,7 +88,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="ni ni-credit-card text-blue"></i>
+                <i class="ni ni-credit-card text-orange"></i>
                 <span class="nav-link-text">Ingresos</span>
               </a>
             </li>
@@ -100,7 +100,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="ni ni-delivery-fast text-blue"></i>
+                <i class="ni ni-delivery-fast text-orange"></i>
                 <span class="nav-link-text">Servicios</span>
               </a>
             </li>
