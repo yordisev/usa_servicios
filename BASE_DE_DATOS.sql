@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.4.11-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.4.22-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
 -- HeidiSQL Versión:             11.3.0.6295
 -- --------------------------------------------------------
@@ -57,11 +57,35 @@ INSERT INTO `clientes` (`id_cliente`, `tipo_doc`, `numero_doc`, `p_nombre`, `s_n
 -- Volcando estructura para tabla servicios_db.empleados
 CREATE TABLE IF NOT EXISTS `empleados` (
   `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_empleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tipo_doc` varchar(5) DEFAULT NULL,
+  `numero_doc` int(11) DEFAULT NULL,
+  `p_nombre` varchar(30) DEFAULT NULL,
+  `s_nombre` varchar(30) DEFAULT NULL,
+  `p_apellido` varchar(30) DEFAULT NULL,
+  `s_apellido` varchar(30) DEFAULT NULL,
+  `telefono` int(11) DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL,
+  `estado` varchar(2) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  PRIMARY KEY (`id_empleado`) USING BTREE,
+  UNIQUE KEY `numero_doc` (`numero_doc`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Volcando datos para la tabla servicios_db.empleados: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.empleados: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
+INSERT INTO `empleados` (`id_empleado`, `tipo_doc`, `numero_doc`, `p_nombre`, `s_nombre`, `p_apellido`, `s_apellido`, `telefono`, `direccion`, `estado`, `fecha_registro`) VALUES
+	(1, 'CC', 24234, 'dayana', 'nombre', 'primera', 'segundo', 319210920, 'calle 45 # 32-45', 'I', '2022-01-17'),
+	(2, 'CC', 2148124, 'DGSDG', 'ASDGSDG', 'SDGSDG', 'SDGSDG', 232523, 'DS', 'A', '2022-01-17'),
+	(3, 'CC', 234234, 'dsgsdgs', 'sdgsdg', 'sdgsdg', 'sdgsdg', 25235, 'dgsdgdsg', 'A', '2022-01-17'),
+	(16, 'CC', 14812498, 'nata', 'isabel', 'perez', 'tejeda', 24832798, 'calle 54 # 32', 'A', '2022-01-18'),
+	(17, 'CC', 12345, 'carlos', 'jiraldo', 'sobrino', 'escorcia', 234327407, 'carrera 455', 'A', '2022-01-18'),
+	(18, 'CC', 987654321, 'avis', 'manuel', 'canate', 'perez', 2147483647, 'calle 23 # 32-11', 'I', '2022-01-19'),
+	(19, 'CC', 2138127, 'prueeab3', 'pruebaas', 'prueba323', 'prueba3287', 37131313, 'calle65', NULL, '2022-01-19'),
+	(20, 'CC', 91919191, 'pablo', 'emilio', 'ariza', 'acuna', 300000002, 'calle 99', 'I', '2022-01-19'),
+	(21, 'CC', 1231313123, 'pacho', 'aguilar', 'ramos', 'ramos', 324242424, 'calle8787', 'A', '2022-01-19'),
+	(22, 'CC', 1271273197, 'carlos', 'alfonso', 'romero', 'carrascal', 311311311, 'calle 22-12', 'A', '2022-01-19'),
+	(23, 'CC', 12, 'fj', 'jfjhf', 'kjffg', 'dh', 8768796, 'khjkhl', NULL, '2022-01-19'),
+	(24, 'CC', 9999999, 'yyyyyy', 'tttttt', 'rrrrrrr', 'dddddd', 787878787, 'calle 45 # 32-45', NULL, '2022-01-19');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.ingresos
@@ -102,28 +126,36 @@ INSERT INTO `pagos_realizados` (`id_pago`, `valor_pago`, `empleado`, `tipo`, `ob
 -- Volcando estructura para tabla servicios_db.servicios
 CREATE TABLE IF NOT EXISTS `servicios` (
   `id_servicio` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` int(11) DEFAULT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
   `cobro_por_hora` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_servicio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
+INSERT INTO `servicios` (`id_servicio`, `nombre`, `cobro_por_hora`) VALUES
+	(1, 'Limpieza Ventanas', 20),
+	(2, 'Limpieza Piscina', 50),
+	(3, 'Limpieza Casa', 100);
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.servicios_a_realizar
 CREATE TABLE IF NOT EXISTS `servicios_a_realizar` (
-  `id` int(11) DEFAULT NULL,
+  `id_ser_rea` int(11) DEFAULT NULL,
   `cliente` int(11) DEFAULT NULL,
-  `servicio` int(11) DEFAULT NULL,
-  `fecha_inicio` int(11) DEFAULT NULL,
-  `fecha_fin` int(11) DEFAULT NULL,
+  `servicio` varchar(50) DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
   `total_a_pagar` int(11) DEFAULT NULL,
-  `fecha` int(11) DEFAULT NULL
+  `fecha` date DEFAULT NULL,
+  `estado_servico` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios_a_realizar: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios_a_realizar: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar` DISABLE KEYS */;
+INSERT INTO `servicios_a_realizar` (`id_ser_rea`, `cliente`, `servicio`, `fecha_inicio`, `fecha_fin`, `total_a_pagar`, `fecha`, `estado_servico`) VALUES
+	(1, 24234, '1', '2022-01-31', '2022-01-31', 200, '2022-01-31', 'A'),
+	(2, 24234, '2', '2022-01-31', '2022-01-31', 300, '2022-01-31', 'A');
 /*!40000 ALTER TABLE `servicios_a_realizar` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.servicios_a_realizar_trabajadore
@@ -158,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   UNIQUE KEY `numero_doc` (`numero_doc`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.usuarios: 4 rows
+-- Volcando datos para la tabla servicios_db.usuarios: 5 rows
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id_admin`, `tipo_doc`, `numero_doc`, `usuario`, `nombres`, `apellidos`, `password`, `estado`, `fecha_registro`, `editado`, `nivel`) VALUES
 	(3, 'TI', 1234, 'dairo@redes.com', 'Dairo Rafael', 'Barrios Ramos', '$2y$12$nuYWSX12NkjZ99T35a0KnudJKyM7d.7o9u4pXTz2vElQuYQlBWHUq', 'A', NULL, NULL, 1),

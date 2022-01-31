@@ -81,7 +81,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="<?= BASE_URL ?>views/empleados/">
                 <i class="ni ni-badge text-blue"></i>
                 <span class="nav-link-text">Empleados</span>
               </a>
@@ -105,7 +105,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="<?= BASE_URL ?>views/serviciosrealizar/">
                 <i class="ni ni-briefcase-24 text-blue"></i>
                 <span class="nav-link-text">Servicios a Realizar</span>
               </a>
