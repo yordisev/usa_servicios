@@ -156,11 +156,11 @@ CREATE TABLE IF NOT EXISTS `servicios_a_realizar` (
   PRIMARY KEY (`id_ser_rea`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios_a_realizar: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios_a_realizar: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar` DISABLE KEYS */;
 INSERT INTO `servicios_a_realizar` (`id_ser_rea`, `cliente`, `servicio`, `fecha_inicio`, `hora_inicio`, `fecha_fin`, `hora_fin`, `total_a_pagar`, `fecha`, `estado_servicio`) VALUES
-	(1, 24234, '1', '2022-01-31', NULL, '2022-01-31', NULL, 200, '2022-01-31', 'A'),
-	(2, 24234, '2', '2022-01-31', NULL, '2022-01-31', NULL, 300, '2022-01-31', 'A'),
+	(1, 2148124, '4', '2022-01-31', '16:37:00', '2022-01-31', '16:40:00', 200, '2022-01-31', 'A'),
+	(2, 24234, '2', '2022-01-31', NULL, '2022-01-31', NULL, 300, '2022-01-31', 'T'),
 	(3, 12345, '3', '2022-01-21', '14:30:00', '2022-01-28', '14:30:00', NULL, '2022-01-31', 'A'),
 	(4, 987654321, '3', '2022-01-21', '14:39:00', '2022-01-31', '14:38:00', NULL, '2022-01-31', 'A'),
 	(5, 1271273197, '3', '2022-01-13', '14:45:00', '2022-01-19', '14:44:00', NULL, '2022-01-31', 'A'),

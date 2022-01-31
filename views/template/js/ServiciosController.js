@@ -173,16 +173,13 @@ function editardatosservicio(id_servicio) {
             var Data = JSON.parse(response);
             console.log(Data);
             if (response != 'Error') {
-                for (var i = 0; i < Data.data.length; i++) {
-                    document.getElementsByName("clienteservicio").innerHTML += "<option value='" + Data.data[i].numero_doc + "'>" + Data.data[i].cliente + "</option>";
-                    // document.getElementsByName("servicionombre").innerHTML += "<option value='" + Data.data[i].id_servicio + "'>" + Data.data[i].nombre + "</option>";
-    
-                }
-                document.getElementById('servicionombre')[0].value = Data.data.nombre;
+                document.getElementsByName('clienteservicio')[0].value = Data.data.numero_doc;
+                document.getElementsByName('servicionombre')[0].value = Data.data.id_servicio;
                 document.getElementsByName('fechainicio')[0].value = Data.data.fecha_inicio;
                 document.getElementsByName('horainicio')[0].value = Data.data.hora_inicio;
                 document.getElementsByName('fechafin')[0].value = Data.data.fecha_fin;
                 document.getElementsByName('horafin')[0].value = Data.data.hora_fin;
+                document.getElementsByName('idservicorealizar')[0].value = Data.data.id_ser_rea;
                 $('#modal-add-nuevoservicio').modal('show');
 
             } else {
@@ -198,16 +195,39 @@ function editardatosservicio(id_servicio) {
         });
 }
 
-function ActualizarServiciorealizar() {
-    var User = {
-        tipoDoc: document.getElementsByName('tipoDoc')[0].value,
-        numDoc: document.getElementsByName('numDoc')[0].value,
-        nombres: document.getElementsByName('nombres')[0].value,
-        apellidos: document.getElementsByName('apellidos')[0].value,
-        usuario: document.getElementsByName('usuario')[0].value,
-        contrasena: document.getElementsByName('contrasena')[0].value,
+
+function ValidarForm(Actualizarservicio, tipo) {
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var exprNum = /^([0-9])*$/;
+    var Validador = false;
+    if (tipo == 2) {
+        document.querySelectorAll("#registratnuevoservicio .form-control").forEach(e => {
+            if (!e.value) {
+                Validador = true;
+            }
+        });
+    } else {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Debe diligenciar todos los campos!',
+        });
+        return false;
     }
-    if (ValidarForm(User, 2)) {
+    return true;
+}
+
+function ActualizarServiciorealizar() {
+    var Actualizarservicio = {
+        clienteservicio: document.getElementsByName('clienteservicio')[0].value,
+        servicionombre: document.getElementsByName('servicionombre')[0].value,
+        fechainicio: document.getElementsByName('fechainicio')[0].value,
+        horainicio: document.getElementsByName('horainicio')[0].value,
+        fechafin: document.getElementsByName('fechafin')[0].value,
+        horafin: document.getElementsByName('horafin')[0].value,
+        idservicorealizar: document.getElementsByName('idservicorealizar')[0].value,
+    }
+    if (ValidarForm(Actualizarservicio, 2)) {
         Swal.fire({
             title: 'Cargando',
         });
@@ -217,10 +237,10 @@ function ActualizarServiciorealizar() {
                 method: 'POST',
                 datatype: 'json',
                 data: {
-                    'function': 'EditarUsuario',
-                    'datos': JSON.stringify(User)
+                    'function': 'Editaservicio',
+                    'datos': JSON.stringify(Actualizarservicio)
                 },
-                url: '/usa_servicios/controllers/Usuarios.php',
+                url: '/usa_servicios/controllers/ServiciosaRealizar.php',
             }).then(function (response) {
                 if (response == 'Exito') {
                     Swal.fire({
@@ -245,5 +265,64 @@ function ActualizarServiciorealizar() {
             });
         }, 1000);
     }
+}
+
+
+function Deshabilitarservicioterminado(id_servicioterminado) {
+
+    Swal.fire({
+        title: 'Trabajo esta Terminado?',
+        html: '<div class="form-group col-md-12">' +
+            '<select class="form-control form-control-lg" name="actaulizarestado">' +
+            '<option value="" readonly>Seleccionar</option>' +
+            '<option value="A">SI</option>' +
+            '<option value="T">NO</option>' +
+            '</select>' +
+            '</div>',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var EditarEstado = {
+                actaulizarestado: document.getElementsByName('actaulizarestado')[0].value,
+                id_servicioterminado: id_servicioterminado,
+            }
+            console.log(EditarEstado);
+            $.ajax({
+                method: 'POST',
+                datatype: 'json',
+                data: {
+                    'function': 'Actualizarestado',
+                    'datos': JSON.stringify(EditarEstado)
+                },
+                url: '/usa_servicios/controllers/ServiciosaRealizar.php',
+            }).then(function(response) {
+                if (response == 'Exito') {
+                    Swal.fire({
+                        title: 'Notificacion!',
+                        position: 'center',
+                        icon: 'success',
+                        text: 'Registro Modificado exitosamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function() {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Notificacion!',
+                        position: 'center',
+                        icon: 'error',
+                        text: 'Ocurrio un error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+        }
+    });
+
 }
 

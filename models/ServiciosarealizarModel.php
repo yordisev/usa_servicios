@@ -64,21 +64,35 @@ function Realizaresteservicio($json)
     return $msg;
 }
 
-// function ActualizarEmpleado($json)
-// {
-//     require_once('../config/config.php');
-//     $ejecutar = $mysqli->prepare("UPDATE  empleados  SET tipo_doc = ?, p_nombre = ?, s_nombre =?, p_apellido=?, s_apellido=?, telefono=?,
-//     direccion = ? WHERE numero_doc = ?");
-//     $ejecutar->bind_param("ssssssss", $json->tipo_doc,$json->p_nombre,$json->s_nombre,$json->p_apellido,$json->s_apellido,
-//     $json->telefono,$json->direccion,$json->numero_doc);
-//  $ejecutar->execute();
-// if ($ejecutar->affected_rows){
-//     $respuesta = "Exito";
-// }else {
-//     $respuesta = "Error";
-// }
+function ActualizarServicio($json)
+{
+    require_once('../config/config.php');
+    $ejecutar = $mysqli->prepare("UPDATE  servicios_a_realizar  SET cliente = ?, servicio = ?, fecha_inicio =?, hora_inicio=?, fecha_fin=?, hora_fin=?
+     WHERE id_ser_rea = ?");
+    $ejecutar->bind_param("sssssss", $json->clienteservicio,$json->servicionombre,$json->fechainicio,$json->horainicio,$json->fechafin,
+    $json->horafin,$json->idservicorealizar);
+ $ejecutar->execute();
+if ($ejecutar->affected_rows){
+    $respuesta = "Exito";
+}else {
+    $respuesta = "Error";
+}
 
-// return $respuesta;
-// }
+return $respuesta;
+}
 
 
+function EstadoServicio($json)
+{
+    require_once('../config/config.php');
+    $ejecutar = $mysqli->prepare("UPDATE  servicios_a_realizar  SET estado_servicio = ? WHERE id_ser_rea = ?");
+    $ejecutar->bind_param("ss", $json->actaulizarestado,$json->id_servicioterminado);
+ $ejecutar->execute();
+if ($ejecutar->affected_rows){
+    $respuesta = "Exito";
+}else {
+    $respuesta = "Error";
+}
+
+return $respuesta;
+}

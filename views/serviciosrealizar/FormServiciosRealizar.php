@@ -13,11 +13,14 @@
            <div class="modal-body">
              <form id="registratnuevoservicio" class="registratnuevoservicio">
                <div class="row">
+                     <!-- <label><strong>FECHA DE INICIO</strong></label> -->
+                     <input type="hidden" class="form-control" name="idservicorealizar" id="idservicorealizar">
+                   
                  <div class="col-md-6">
                    <div class="form-group">
                      <label><strong>CLIENTE</strong></label>
                      <select class="form-control" name="clienteservicio" id="clienteservicio">
-                       <option  readonly>Seleccionar Cliente</option>
+                       <!-- <option value="" readonly>Seleccionar Cliente</option> -->
                      </select>
                    </div>
                  </div>
@@ -25,7 +28,7 @@
                  <div class="form-group">
                      <label><strong>SERVICIO</strong></label>
                      <select class="form-control" name="servicionombre" id="servicionombre">
-                       <option value="" readonly>Seleccionar Servicio</option>
+                       <!-- <option value="" readonly>Seleccionar Servicio</option> -->
                      </select>
                    </div>
                  </div>
