@@ -82,31 +82,31 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="fa fa-users text-blue"></i>
+                <i class="ni ni-badge text-blue"></i>
                 <span class="nav-link-text">Empleados</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="fa fa-users text-blue"></i>
+                <i class="ni ni-credit-card text-blue"></i>
                 <span class="nav-link-text">Ingresos</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="fa fa-users text-blue"></i>
+                <i class="ni ni-money-coins text-blue"></i>
                 <span class="nav-link-text">Pagos Realizados</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="fa fa-users text-blue"></i>
+                <i class="ni ni-delivery-fast text-blue"></i>
                 <span class="nav-link-text">Servicios</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="fa fa-users text-blue"></i>
+                <i class="ni ni-briefcase-24 text-blue"></i>
                 <span class="nav-link-text">Servicios a Realizar</span>
               </a>
             </li>
