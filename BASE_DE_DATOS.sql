@@ -164,7 +164,7 @@ INSERT INTO `servicios_a_realizar` (`id_ser_rea`, `cliente`, `servicio`, `fecha_
 	(3, 12345, '3', '2022-01-21', '14:30:00', '2022-01-28', '14:30:00', NULL, '2022-01-31', 'A'),
 	(4, 987654321, '3', '2022-01-21', '14:39:00', '2022-01-31', '14:38:00', NULL, '2022-01-31', 'A'),
 	(5, 1271273197, '3', '2022-01-13', '14:45:00', '2022-01-19', '14:44:00', NULL, '2022-01-31', 'A'),
-	(6, 1271273197, '2', '2022-01-11', '14:45:00', '2022-01-27', '14:44:00', NULL, '2022-01-31', 'A'),
+	(6, 1271273197, '2', '2022-01-11', '14:45:00', '2022-01-27', '14:44:00', NULL, '2022-01-31', 'T'),
 	(7, 2138127, '2', '2022-01-06', '14:48:00', '2022-01-19', '14:47:00', NULL, '2022-01-31', 'A'),
 	(10, 12345, '2', '2022-01-26', '14:51:00', '2022-01-31', '14:48:00', NULL, '2022-01-31', 'A'),
 	(11, 24234, '2', '2022-01-13', '18:48:00', '2022-01-31', '14:50:00', NULL, '2022-01-31', 'A');
@@ -172,16 +172,24 @@ INSERT INTO `servicios_a_realizar` (`id_ser_rea`, `cliente`, `servicio`, `fecha_
 
 -- Volcando estructura para tabla servicios_db.servicios_a_realizar_trabajadore
 CREATE TABLE IF NOT EXISTS `servicios_a_realizar_trabajadore` (
-  `id_servicoarealizar` int(11) NOT NULL AUTO_INCREMENT,
-  `trabajador` int(11) NOT NULL DEFAULT 0,
-  `hora_inicio` int(11) NOT NULL DEFAULT 0,
-  `hora_fin` int(11) NOT NULL DEFAULT 0,
-  `fecha` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id_servicoarealizar`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_servicioarealizar` int(11) NOT NULL AUTO_INCREMENT,
+  `id_servicio` int(11) NOT NULL,
+  `trabajador` int(11) NOT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  `hora_fin` time DEFAULT NULL,
+  `fecha` int(11) NOT NULL,
+  `estadoservi` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_servicioarealizar`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` DISABLE KEYS */;
+INSERT INTO `servicios_a_realizar_trabajadore` (`id_servicioarealizar`, `id_servicio`, `trabajador`, `fecha_inicio`, `hora_inicio`, `fecha_fin`, `hora_fin`, `fecha`, `estadoservi`) VALUES
+	(1, 2, 24234, NULL, '00:00:00', NULL, '00:00:00', 0, 'A'),
+	(2, 2, 2148124, NULL, '00:00:00', NULL, '00:00:00', 0, ''),
+	(3, 2, 12345, NULL, NULL, NULL, NULL, 2147483647, '');
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.usuarios
