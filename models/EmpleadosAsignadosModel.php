@@ -27,10 +27,10 @@ return $datos;
 function selectServicioempleado($json){
    
 require_once('../config/config.php');
-$query = mysqli_query($mysqli,"SELECT s.id_servicioarealizar, s.id_servicio, se.nombre, CONCAT(e.p_nombre,' ',e.s_nombre, ' ',e.p_apellido,' ',e.s_apellido) AS empleado,
+$query = mysqli_query($mysqli,"SELECT s.id_servicioarealizar, s.id_servicio, CONCAT(e.p_nombre,' ',e.s_nombre, ' ',e.p_apellido,' ',e.s_apellido) AS empleado,
 s.fecha_inicio,s.hora_inicio,s.fecha_fin,s.hora_fin,s.fecha,s.estadoservi
 FROM servicios_a_realizar_trabajadore s
-INNER JOIN servicios se ON s.id_servicio=se.id_servicio
+INNER JOIN servicios_a_realizar se ON s.id_servicio=se.id_ser_rea
 INNER JOIN empleados e ON s.trabajador=e.numero_doc
 WHERE s.id_servicio= '$json->id_servicio_a_realizar'");
 $datos = array();

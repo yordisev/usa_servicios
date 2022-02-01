@@ -89,7 +89,7 @@ function asignarunempleado(iddelservicioagregar) {
                         title: 'Notificacion!',
                         position: 'center',
                         icon: 'success',
-                        text: 'Registro Modificado exitosamente',
+                        text: 'Empleado Agregado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
                     }).then(function() {
@@ -164,6 +164,7 @@ function ActualizarEmpleAsignado() {
                         timer: 1500
                     });
                     $('#modal-add-actualizarempleasignado').modal('hide');
+                    
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
