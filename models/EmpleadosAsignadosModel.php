@@ -89,3 +89,41 @@ if ($ejecutar->affected_rows){
 return $respuesta;
 }
 
+
+function Select_Tiempo_Empleado($json){
+    require_once('../config/config.php');
+$query = mysqli_query($mysqli, "SELECT s.id_servicioarealizar, s.trabajador,s.fecha_inicio,s.hora_inicio,s.fecha_fin,s.hora_fin
+FROM servicios_a_realizar_trabajadore s WHERE s.id_servicioarealizar = $json");
+$datos = $query->fetch_assoc();
+return $datos;
+
+    }
+
+    function ActualizarTiempodedeesteempleado($json)
+{
+    require_once('../config/config.php');
+    $ejecutar = $mysqli->prepare("UPDATE  servicios_a_realizar_trabajadore  SET fecha_inicio = ?, hora_inicio = ?, fecha_fin =?, hora_fin=? WHERE id_servicioarealizar = ?");
+    $ejecutar->bind_param("sssss", $json->Empleado_fecha_inicio,$json->Empleado_hora_inicio,$json->Empleado_fecha_fin,$json->Empleado_hora_fin,$json->id_tiempo_ser_emple);
+ $ejecutar->execute();
+if ($ejecutar->affected_rows){
+    $respuesta = "Exito";
+}else {
+    $respuesta = "Error";
+}
+
+return $respuesta;
+}
+    function Actualizarestadodeesteempleado($json)
+{
+    require_once('../config/config.php');
+    $ejecutar = $mysqli->prepare("UPDATE  servicios_a_realizar_trabajadore  SET estadoservi = ? WHERE id_servicioarealizar = ?");
+    $ejecutar->bind_param("ss", $json->seleccionarestadoempleado,$json->idactualizarpago);
+ $ejecutar->execute();
+if ($ejecutar->affected_rows){
+    $respuesta = "Exito";
+}else {
+    $respuesta = "Error";
+}
+
+return $respuesta;
+}

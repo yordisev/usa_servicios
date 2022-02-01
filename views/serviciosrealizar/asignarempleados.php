@@ -47,6 +47,7 @@ require "../template/header.php";
                     </div>
 
                 </div>
+                <?php include("FormActEmp.php");?>
                 <div class="table-responsive py-4">
                     <!-- <div style="width:auto; height:380px; overflow:auto;"> -->
                     <table class="table table-flush" id="tablaempleadosasignados">

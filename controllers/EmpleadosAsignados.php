@@ -18,21 +18,7 @@ function llamarempleados(){
             die();
 }
 
-function EditarEmpleado1(){
-    require_once('../models/EmpleadosAsignadosModel.php');
-    $json = json_decode($_POST['datos']);
-    $id_servicio = intval($json);
-    if($id_servicio > 0){
-            $arraData = selectEmpleado($json);
-            if(empty($arraData)){
-                $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados');
-            }else{
-                $arrResponse = array('status' => true, 'data' => $arraData);
-            }
-            echo json_encode($arrResponse);
-        }
-        die();
-}
+
 
 function ListarEmpleadosalservicio(){
     require_once('../models/EmpleadosAsignadosModel.php');
@@ -47,12 +33,14 @@ function ListarEmpleadosalservicio(){
 					if($arrservi[$i]["estadoservi"] == "A")
 					{
 						$arrservi[$i]["estadoservi"] = '<span class="badge badge-primary">Activo</span>';
-					}else{
-						$arrservi[$i]["estadoservi"] = '<span class="badge badge-danger">Inactivo</span>';
-					}
+					}else if ($arrservi[$i]["estadoservi"] == "T"){
+						$arrservi[$i]["estadoservi"] = '<span class="badge badge-success">Termino</span>';
+					}else {
+                        $arrservi[$i]["estadoservi"] = '<span class="badge badge-danger">Inactivo</span>';
+                    }
 
-                    $btnView = '<button class="editarcliente btn btn-success btn-sm" onClick="Deshabilitarempleado(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Deshabilitar Empleado"><i class="ni ni-ui-04"></i></button>';
-                    $btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="editardatosempleado(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
+                    $btnView = '<button class="editarcliente btn btn-success btn-sm" onClick="SeleccionarEmpleAsignado(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Actualizar tiempo Empleado"><i class="ni ni-ui-04"></i></button>';
+                    $btnEdit = '<button class="btn btn-primary  btn-sm" onClick="Estadosdeltrabajador(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
 						
 				
 				
@@ -92,3 +80,42 @@ function Actualizarestadoagregarempleado()
     }
 }
 
+
+function SeleccionarEditatiempoempleado(){
+    require_once('../models/EmpleadosAsignadosModel.php');
+    $json = json_decode($_POST['datos']);
+    $id_servicio_empleado = intval($json);
+    if($id_servicio_empleado > 0){
+            $arraData = Select_Tiempo_Empleado($json);
+            if(empty($arraData)){
+                $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados');
+            }else{
+                $arrResponse = array('status' => true, 'data' => $arraData);
+            }
+            echo json_encode($arrResponse);
+        }
+        die();
+}
+
+function ActualizaTiempoEmpleado()
+{
+    require_once('../models/EmpleadosAsignadosModel.php');
+    $json = json_decode($_POST['datos']);
+    if($json->id_tiempo_ser_emple != '' && $json->Empleado_fecha_inicio != '' && $json->Empleado_hora_inicio != ''){
+        $response = ActualizarTiempodedeesteempleado($json);
+        echo $response;
+    }else{
+        echo $response;
+    }
+}
+function Actualizarestadoempleado()
+{
+    require_once('../models/EmpleadosAsignadosModel.php');
+    $json = json_decode($_POST['datos']);
+    if($json->idactualizarpago != ''){
+        $response = Actualizarestadodeesteempleado($json);
+        echo $response;
+    }else{
+        echo $response;
+    }
+}
