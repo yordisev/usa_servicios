@@ -48,7 +48,9 @@ function ListarEmpleadosalservicio(){
                     }
 			// $arrResponse['status'] = true;
 			$arrResponse["data"] = $arrservi;		
-		}
+		}else{
+            $arrResponse = [];
+        }
 		echo json_encode($arrResponse);
 		die();
 }

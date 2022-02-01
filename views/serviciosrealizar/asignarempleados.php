@@ -35,16 +35,9 @@ require "../template/header.php";
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header">
-                    <div class="row">
-                        <div class="float-right">
-
-                            <router-link class="btn btn-danger float-right" :to="'/personas'">Atras</router-link>
-                        </div>
-                        <div class="float-left">
-
-                            <button class="btn btn-success float-left" onclick="asignarunempleado('<?php echo $_GET['id_servicio_r']; ?>')">Asignar Empleados</button>
-                        </div>
-                    </div>
+                            <h3 class="mb-0"> <a type="button" class="btn btn-danger float-right" href="javascript:history.back()">Atras</a>
+                            <button class="btn btn-success float-left" onclick="asignarunempleado('<?php echo $_GET['id_servicio_r']; ?>')">Asignar Empleados</button></h3>
+                       
 
                 </div>
                 <?php include("FormActEmp.php");?>

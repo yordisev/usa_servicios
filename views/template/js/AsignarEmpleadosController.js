@@ -41,14 +41,15 @@ function tablaempleadosasignados() {
         },
         "columns": [
 
-            { "data": "options" },
-            { "data": "empleado" },
-            { "data": "fecha_inicio" },
-            { "data": "hora_inicio" },
-            { "data": "fecha_fin" },
-            { "data": "hora_fin" },
-            { "data": "fecha" },
-            { "data": "estadoservi" },
+            { "data": "options" ,"defaultContent": "<i>Not set</i>"},
+            { "data": "empleado" ,"defaultContent": "<i>Not set</i>"},
+            { "data": "fecha_inicio" ,"defaultContent": "<i>Not set</i>"},
+            { "data": "hora_inicio" ,"defaultContent": "<i>Not set</i>"},
+            { "data": "fecha_fin" ,"defaultContent": "<i>Not set</i>"},
+            { "data": "hora_fin" ,"defaultContent": "<i>Not set</i>"},
+            { "data": "fecha" ,"defaultContent": "<i>Not set</i>"},
+            { "data": "estadoservi","defaultContent": "<i>Not set</i>" },
+            
         ]
     });
 }
