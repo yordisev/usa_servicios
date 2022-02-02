@@ -1,5 +1,6 @@
 <?php 
 	const BASE_URL = "http://localhost/usa_servicios/";
+	// const BASE_URL = "http://192.168.52.54/usa_servicios/";
 	require_once('../../models/sessiones.php');
  ?>
 
@@ -53,20 +54,10 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
-                <i class="ni ni-shop text-primary"></i>
-                <span class="nav-link-text">Dashboards</span>
+              <a class="nav-link" href="<?= BASE_URL ?>views/inicio/">
+                <i class="ni ni-shop text-blue"></i>
+                <span class="nav-link-text">Usuarios</span>
               </a>
-              <div class="collapse show" id="navbar-dashboards">
-                <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
-                    <a href="<?= BASE_URL ?>views/inicio/" class="nav-link">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?= BASE_URL ?>pages/dashboards/alternative.html" class="nav-link">Alternative</a>
-                  </li>
-                </ul>
-              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>views/usuarios/">
@@ -110,6 +101,12 @@
                 <span class="nav-link-text">Servicios a Realizar</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE_URL ?>views/empleadoservicio/">
+                <i class="ni ni-briefcase-24 text-blue"></i>
+                <span class="nav-link-text">Servicios a Realizar Empleado</span>
+              </a>
+            </li>
           </ul>
        
         </div>
@@ -143,7 +140,7 @@
                     <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
                   </span>
                   <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                    <span class="mb-0 text-sm  font-weight-bold"><?php echo $_SESSION['nombre']; ?></span>
                   </div>
                 </div>
               </a>

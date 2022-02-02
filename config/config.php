@@ -1,6 +1,7 @@
 <?php 
 	
 	const BASE_URL = "http://localhost/usa_servicios/";
+	// const BASE_URL = "http://192.168.52.54/usa_servicios/";
 	const DB_HOST = "localhost";
 	const DB_NAME = "servicios_db";
 	const DB_USER = "root";

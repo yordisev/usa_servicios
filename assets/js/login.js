@@ -69,6 +69,7 @@ function Login() {
                     $('#FormLogin')[0].reset();
                     localStorage.setItem('usuario', response[1]);
                     location.href = 'http://localhost/usa_servicios/views/inicio';
+                    // location.href = 'http://192.168.52.54/usa_servicios/views/inicio';
 
                 } else {
                     Swal.fire({

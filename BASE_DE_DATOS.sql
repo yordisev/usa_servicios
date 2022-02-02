@@ -184,18 +184,19 @@ CREATE TABLE IF NOT EXISTS `servicios_a_realizar_trabajadore` (
   PRIMARY KEY (`id_servicioarealizar`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` DISABLE KEYS */;
 INSERT INTO `servicios_a_realizar_trabajadore` (`id_servicioarealizar`, `id_servicio`, `trabajador`, `fecha_inicio`, `hora_inicio`, `fecha_fin`, `hora_fin`, `fecha`, `estadoservi`) VALUES
-	(1, 2, 24234, '2022-01-13', '14:03:00', '2022-02-02', '21:06:00', '0000-00-00', 'A'),
+	(1, 2, 24234, '2022-02-02', '16:56:00', '2022-02-02', '16:56:00', '0000-00-00', 'A'),
 	(2, 2, 2148124, '2021-12-29', '06:00:00', '2022-02-23', '15:00:00', '0000-00-00', 'T'),
-	(3, 2, 12345, NULL, NULL, NULL, NULL, '0000-00-00', ''),
+	(3, 2, 12345, '2022-01-12', '07:31:00', '2022-02-02', '07:30:00', '0000-00-00', ''),
 	(4, 2, 14812498, NULL, NULL, NULL, NULL, '0000-00-00', ''),
 	(5, 6, 14812498, '2022-02-25', '06:55:00', '2022-02-10', '14:55:00', '2022-02-01', ''),
 	(6, 6, 12345, '2022-02-01', '06:57:00', '2022-02-03', '16:57:00', '2022-02-01', ''),
 	(7, 6, 1271273197, NULL, NULL, NULL, NULL, '2022-02-01', ''),
 	(8, 7, 12345, NULL, NULL, NULL, NULL, '2022-02-01', ''),
-	(9, 7, 14812498, NULL, NULL, NULL, NULL, '2022-02-01', '');
+	(9, 7, 14812498, NULL, NULL, NULL, NULL, '2022-02-01', ''),
+	(10, 1, 2148124, NULL, NULL, NULL, NULL, '2022-02-02', 'D');
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.usuarios
@@ -223,7 +224,8 @@ INSERT INTO `usuarios` (`id_admin`, `tipo_doc`, `numero_doc`, `usuario`, `nombre
 	(5, 'CC', 123456, 'yordis@redes.com', 'Yordis', 'Escorcia', '$2y$12$5keXTBZQhRWC9RddHhs/IOTeVGaqFbXD6zKCmsYxi3ODDUCZulh9W', 'A', NULL, NULL, 1),
 	(6, 'CC', 987654, 'regina@redes.com', 'Regina Marina', 'TRILLO PRUEBA', '$2y$12$9aybpvrXNTT/Qf2JjmrHMulOQOAhE5XBquZc.DIROCzB8VssEoO6q', 'A', NULL, NULL, 1),
 	(7, 'CC', 12345, 'carlos@redes.com', 'Carlos', 'Sobrino', '$2y$12$PEgV1VqS.z3T0yMIQ24NwuMXE9vFY1cOksU5amGOtsChjv7teFDjG', 'A', NULL, NULL, 3),
-	(8, 'TI', 123, 'angie@redes.com', 'angie', 'Escorcia Vasquez', '$2y$12$tz/CAxQvS7sWR8nJGQ5eb.vEWkAzgrIoOYEQf48b5OZQ5HHLPa8PG', 'A', NULL, NULL, 1);
+	(8, 'TI', 123, 'angie@redes.com', 'angie', 'Escorcia Vasquez', '$2y$12$tz/CAxQvS7sWR8nJGQ5eb.vEWkAzgrIoOYEQf48b5OZQ5HHLPa8PG', 'A', NULL, NULL, 1),
+	(9, 'CC', 24234, 'dayana@redes.com', 'Dayana', 'prima', '$2y$12$T8mD4bLqFe3znRAt4o.isuc0rXpv9keO65x4qHfq8rd9IhORdS4ri', 'A', NULL, NULL, 1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
