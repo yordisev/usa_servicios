@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `servicios_a_realizar_trabajadore` (
 -- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~11 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` DISABLE KEYS */;
 INSERT INTO `servicios_a_realizar_trabajadore` (`id_servicioarealizar`, `id_servicio`, `trabajador`, `fecha_inicio`, `hora_inicio`, `fecha_fin`, `hora_fin`, `fecha`, `estadoservi`, `estadoemple`) VALUES
-	(1, 2, 24234, '2022-02-03', '07:29:00', '2022-02-03', '16:18:00', '0000-00-00', 'A', ''),
+	(1, 2, 24234, '2022-02-03', '16:37:00', '2022-02-03', '16:37:00', '0000-00-00', 'T', 'Termino'),
 	(2, 2, 2148124, '2021-12-29', '06:00:00', '2022-02-23', '15:00:00', '0000-00-00', 'T', ''),
 	(3, 2, 12345, '2022-01-12', '07:31:00', '2022-02-02', '07:30:00', '0000-00-00', '', ''),
 	(4, 2, 14812498, NULL, NULL, NULL, NULL, '0000-00-00', '', ''),

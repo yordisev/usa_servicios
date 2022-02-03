@@ -11,7 +11,7 @@ s.fecha_inicio,s.hora_inicio,s.fecha_fin,s.hora_fin,s.fecha,s.estadoservi,s.esta
 FROM servicios_a_realizar_trabajadore s
 INNER JOIN servicios_a_realizar se ON s.id_servicio=se.id_ser_rea
 INNER JOIN usuarios u ON s.trabajador=u.numero_doc
-WHERE s.trabajador = '$cedula_empleado'");
+WHERE s.trabajador = '$cedula_empleado' and s.estadoemple  NOT IN ('Termino')");
 $datos = array();
 while ($row = $query->fetch_assoc()) {
   $datos[]= $row;

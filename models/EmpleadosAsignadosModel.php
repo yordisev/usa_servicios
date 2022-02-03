@@ -116,7 +116,7 @@ return $respuesta;
     function Actualizarestadodeesteempleado($json)
 {
     require_once('../config/config.php');
-    $ejecutar = $mysqli->prepare("UPDATE  servicios_a_realizar_trabajadore  SET estadoservi = ? WHERE id_servicioarealizar = ?");
+    $ejecutar = $mysqli->prepare("UPDATE  servicios_a_realizar_trabajadore  SET estadoservi = ?, estadoemple = 'Termino' WHERE id_servicioarealizar = ?");
     $ejecutar->bind_param("ss", $json->seleccionarestadoempleado,$json->idactualizarpago);
  $ejecutar->execute();
 if ($ejecutar->affected_rows){
