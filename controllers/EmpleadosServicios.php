@@ -10,8 +10,7 @@ function ListarEmpleadosalservicio(){
 		$arrservi = selectServicioempleado();
 		if(!empty($arrservi)){
 			for ($i=0; $i < count($arrservi) ; $i++) { 
-				   $btnView = "";
-					$btnEdit = "";
+				  
                     $horainicio = new DateTime($arrservi[$i]['hora_inicio']);
                     $horafin = new DateTime($arrservi[$i]['hora_fin']);
                     $totalhoras = $horainicio->diff($horafin);
@@ -20,19 +19,24 @@ function ListarEmpleadosalservicio(){
                     $fechafin = new DateTime($arrservi[$i]['fecha_fin']);
                     $totaldias = $fechainicio->diff($fechafin);
 
-					if($arrservi[$i]["estadoservi"] == "A")
+					if($arrservi[$i]["estadoservi"] == "A" || $arrservi[$i]["estadoservi"] == "I")
 					{
 						$arrservi[$i]["estadoservi"] = '<span class="badge badge-primary">Activo</span>';
 					}else if ($arrservi[$i]["estadoservi"] == "T"){
 						$arrservi[$i]["estadoservi"] = '<span class="badge badge-success">Termino</span>';
 					}else {
-                        $arrservi[$i]["estadoservi"] = '<span class="badge badge-danger">Inactivo</span>';
+                        $arrservi[$i]["estadoservi"] = '<span class="badge badge-danger">Termino</span>';
                     }
 
-                    $btnView = '<button class="editarcliente btn btn-success btn-sm" onClick="iniciarlabor(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Iniciar hora Labor"><i class="ni ni-bell-55"></i></button>';
-                    $btnEdit = '<button class="btn btn-danger  btn-sm" onClick="terminarlabor(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Terminar Hora Labor"><i class="ni ni-bell-55"></i></button>';
-						
-                        $arrservi[$i]["options"] = '<div class="text-center">'.$btnView.' '.$btnEdit.'</div>';
+                    if($arrservi[$i]["estadoemple"] == "")
+					{
+						$arrservi[$i]["options"] = '<button class="editarcliente btn btn-success btn-sm" onClick="iniciarlabor(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Iniciar hora Labor"><i class="ni ni-bell-55"></i></button>';
+					}else if($arrservi[$i]["estadoemple"] == "I"){
+                        $arrservi[$i]["options"] = '<button class="btn btn-danger  btn-sm" onClick="terminarlabor(' . $arrservi[$i]['id_servicioarealizar'] . ')" title="Terminar Hora Labor"><i class="ni ni-bell-55"></i></button>';
+					} else{
+                        $arrservi[$i]["options"] = '<button class="btn btn-default  btn-sm"  title="Trabajoterminado"><i class="ni ni-bell-55"></i></button>';
+                    }
+                    
 
                         $arrservi[$i]["datosdias"] = '<div class="text-center">'.$totaldias->days.'</div>';
                         $arrservi[$i]["datoshoras"] = '<div class="text-center">'.$totalhoras->format('%H horas %i minutos').PHP_EOL.'</div>';

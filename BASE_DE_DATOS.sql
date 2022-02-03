@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `servicios` (
   `cobro_por_hora` int(11) DEFAULT NULL,
   `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_servicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- Volcando datos para la tabla servicios_db.servicios: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
@@ -181,22 +181,24 @@ CREATE TABLE IF NOT EXISTS `servicios_a_realizar_trabajadore` (
   `hora_fin` time DEFAULT NULL,
   `fecha` date NOT NULL,
   `estadoservi` varchar(50) NOT NULL,
+  `estadoemple` varchar(50) NOT NULL,
   PRIMARY KEY (`id_servicioarealizar`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~9 rows (aproximadamente)
+-- Volcando datos para la tabla servicios_db.servicios_a_realizar_trabajadore: ~11 rows (aproximadamente)
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` DISABLE KEYS */;
-INSERT INTO `servicios_a_realizar_trabajadore` (`id_servicioarealizar`, `id_servicio`, `trabajador`, `fecha_inicio`, `hora_inicio`, `fecha_fin`, `hora_fin`, `fecha`, `estadoservi`) VALUES
-	(1, 2, 24234, '2022-02-02', '16:56:00', '2022-02-02', '16:56:00', '0000-00-00', 'A'),
-	(2, 2, 2148124, '2021-12-29', '06:00:00', '2022-02-23', '15:00:00', '0000-00-00', 'T'),
-	(3, 2, 12345, '2022-01-12', '07:31:00', '2022-02-02', '07:30:00', '0000-00-00', ''),
-	(4, 2, 14812498, NULL, NULL, NULL, NULL, '0000-00-00', ''),
-	(5, 6, 14812498, '2022-02-25', '06:55:00', '2022-02-10', '14:55:00', '2022-02-01', ''),
-	(6, 6, 12345, '2022-02-01', '06:57:00', '2022-02-03', '16:57:00', '2022-02-01', ''),
-	(7, 6, 1271273197, NULL, NULL, NULL, NULL, '2022-02-01', ''),
-	(8, 7, 12345, NULL, NULL, NULL, NULL, '2022-02-01', ''),
-	(9, 7, 14812498, NULL, NULL, NULL, NULL, '2022-02-01', ''),
-	(10, 1, 2148124, NULL, NULL, NULL, NULL, '2022-02-02', 'D');
+INSERT INTO `servicios_a_realizar_trabajadore` (`id_servicioarealizar`, `id_servicio`, `trabajador`, `fecha_inicio`, `hora_inicio`, `fecha_fin`, `hora_fin`, `fecha`, `estadoservi`, `estadoemple`) VALUES
+	(1, 2, 24234, '2022-02-03', '07:29:00', '2022-02-03', '16:18:00', '0000-00-00', 'A', ''),
+	(2, 2, 2148124, '2021-12-29', '06:00:00', '2022-02-23', '15:00:00', '0000-00-00', 'T', ''),
+	(3, 2, 12345, '2022-01-12', '07:31:00', '2022-02-02', '07:30:00', '0000-00-00', '', ''),
+	(4, 2, 14812498, NULL, NULL, NULL, NULL, '0000-00-00', '', ''),
+	(5, 6, 14812498, '2022-02-25', '06:55:00', '2022-02-10', '14:55:00', '2022-02-01', '', ''),
+	(6, 6, 12345, '2022-02-01', '06:57:00', '2022-02-05', '16:57:00', '2022-02-01', '', ''),
+	(7, 6, 1271273197, NULL, NULL, NULL, NULL, '2022-02-01', '', ''),
+	(8, 7, 12345, NULL, NULL, NULL, NULL, '2022-02-01', '', ''),
+	(9, 7, 14812498, NULL, NULL, NULL, NULL, '2022-02-01', '', ''),
+	(10, 1, 2148124, NULL, NULL, NULL, NULL, '2022-02-02', 'D', ''),
+	(11, 7, 24234, '2022-02-03', '16:08:00', '2022-02-03', '16:17:00', '0000-00-00', 'I', '');
 /*!40000 ALTER TABLE `servicios_a_realizar_trabajadore` ENABLE KEYS */;
 
 -- Volcando estructura para tabla servicios_db.usuarios
@@ -215,9 +217,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id_admin`) USING BTREE,
   UNIQUE KEY `usuario` (`usuario`) USING BTREE,
   UNIQUE KEY `numero_doc` (`numero_doc`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla servicios_db.usuarios: 5 rows
+-- Volcando datos para la tabla servicios_db.usuarios: 6 rows
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id_admin`, `tipo_doc`, `numero_doc`, `usuario`, `nombres`, `apellidos`, `password`, `estado`, `fecha_registro`, `editado`, `nivel`) VALUES
 	(3, 'TI', 1234, 'dairo@redes.com', 'Dairo Rafael', 'Barrios Ramos', '$2y$12$nuYWSX12NkjZ99T35a0KnudJKyM7d.7o9u4pXTz2vElQuYQlBWHUq', 'A', NULL, NULL, 1),
@@ -225,7 +227,7 @@ INSERT INTO `usuarios` (`id_admin`, `tipo_doc`, `numero_doc`, `usuario`, `nombre
 	(6, 'CC', 987654, 'regina@redes.com', 'Regina Marina', 'TRILLO PRUEBA', '$2y$12$9aybpvrXNTT/Qf2JjmrHMulOQOAhE5XBquZc.DIROCzB8VssEoO6q', 'A', NULL, NULL, 1),
 	(7, 'CC', 12345, 'carlos@redes.com', 'Carlos', 'Sobrino', '$2y$12$PEgV1VqS.z3T0yMIQ24NwuMXE9vFY1cOksU5amGOtsChjv7teFDjG', 'A', NULL, NULL, 3),
 	(8, 'TI', 123, 'angie@redes.com', 'angie', 'Escorcia Vasquez', '$2y$12$tz/CAxQvS7sWR8nJGQ5eb.vEWkAzgrIoOYEQf48b5OZQ5HHLPa8PG', 'A', NULL, NULL, 1),
-	(9, 'CC', 24234, 'dayana@redes.com', 'Dayana', 'prima', '$2y$12$T8mD4bLqFe3znRAt4o.isuc0rXpv9keO65x4qHfq8rd9IhORdS4ri', 'A', NULL, NULL, 1);
+	(9, 'CC', 24234, 'dayana@redes.com', 'Dayana', 'prima', '$2y$12$T8mD4bLqFe3znRAt4o.isuc0rXpv9keO65x4qHfq8rd9IhORdS4ri', 'A', NULL, NULL, 3);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
