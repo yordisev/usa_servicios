@@ -56,9 +56,10 @@
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>views/inicio/">
                 <i class="ni ni-shop text-blue"></i>
-                <span class="nav-link-text">Usuarios</span>
+                <span class="nav-link-text">Inicio</span>
               </a>
             </li>
+            <?php if($_SESSION['nivel'] == '1'){ ?>
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>views/usuarios/">
                 <i class="ni ni-circle-08 text-blue"></i>
@@ -101,6 +102,7 @@
                 <span class="nav-link-text">Servicios a Realizar</span>
               </a>
             </li>
+            <?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>views/empleadoservicio/">
                 <i class="ni ni-briefcase-24 text-blue"></i>

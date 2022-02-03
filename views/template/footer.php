@@ -31,6 +31,8 @@
 		const base_url = "<?= BASE_URL ?>";
 	</script>
 <script src="<?= BASE_URL ?>assets/js/sweetalert.min.js"></script>
+
+<script src="https://unpkg.com/moment@2.17.0/moment.js"></script>
 <!-- Core -->
 <script src="<?= BASE_URL ?>assets/js/jquery-3.6.0.min.js"></script>
 <!-- <script src="<?= BASE_URL ?>assets/vendor/jquery/dist/jquery.min.js"></script> -->

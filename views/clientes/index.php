@@ -1,5 +1,6 @@
 <?php
 require "../template/header.php";
+if($_SESSION['nivel'] == '1'){
 ?>
 
 <div class="header bg-primary pb-6">
@@ -43,6 +44,10 @@ require "../template/header.php";
     </div>
 
     <?php
+    } else {
+        session_destroy();
+        echo "<meta http-equiv='refresh' content='0; url=index.php?alert=1'>";
+            }
     require "../template/footer.php";
     ?>
 

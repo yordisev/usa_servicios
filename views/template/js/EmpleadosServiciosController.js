@@ -52,6 +52,8 @@ function misservicios() {
             { "data": "hora_fin", "defaultContent": "<i>Not set</i>" },
             { "data": "fecha", "defaultContent": "<i>Not set</i>" },
             { "data": "estadoservi", "defaultContent": "<i>Not set</i>" },
+            { "data": "datosdias", "defaultContent": "<i>Not set</i>" },
+            { "data": "datoshoras", "defaultContent": "<i>Not set</i>" },
 
         ]
     });
@@ -165,6 +167,30 @@ function terminarlabor(iddelservicioagregar) {
 
 }
 
+// var day1 = new Date("2022-02-05"); 
+// var day2 = new Date("2022-02-02");
+
+// var difference= Math.abs(day2-day1);
+// days = difference/(1000 * 3600 * 24)
+
+// console.log(days)
+
+var fecha1 = moment("2016-09-30 07:30:00", "YYYY-MM-DD HH:mm:ss");
+var fecha2 = moment("2016-10-03 07:30:00", "YYYY-MM-DD HH:mm:ss");
+
+var diff = fecha2.diff(fecha1, 'd'); // Diff in days
+console.log(diff);
+
+var diff = fecha2.diff(fecha1, 'h'); // Diff in hours
+console.log(diff);
+
+var diff = fecha2.diff(fecha1, 'm'); // Diff in hours
+console.log(diff);
 
 
+var hora1 = moment("07:30:00", "HH:mm:ss");
+var hora2 = moment("07:25:00", "HH:mm:ss");
+
+var diffhora = hora2.diff(hora1, 'm'); // Diff in hours
+console.log(diffhora);
 

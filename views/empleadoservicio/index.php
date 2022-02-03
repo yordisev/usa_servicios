@@ -31,6 +31,8 @@
                                 <th>HORA F</th>
                                 <th>FECHA</th>
                                 <th>ESTADO</th>
+                                <th>DIAS</th>
+                                <th>HORAS</th>
                             </tr>
                         </thead>
                     </table>
