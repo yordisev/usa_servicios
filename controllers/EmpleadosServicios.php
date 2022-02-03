@@ -35,7 +35,7 @@ function ListarEmpleadosalservicio(){
                         $arrservi[$i]["options"] = '<div class="text-center">'.$btnView.' '.$btnEdit.'</div>';
 
                         $arrservi[$i]["datosdias"] = '<div class="text-center">'.$totaldias->days.'</div>';
-                        $arrservi[$i]["datoshoras"] = '<div class="text-center">'.$totalhoras->format('Total: %H horas %i minutos').PHP_EOL.'</div>';
+                        $arrservi[$i]["datoshoras"] = '<div class="text-center">'.$totalhoras->format('%H horas %i minutos').PHP_EOL.'</div>';
 
                     }
 			// $arrResponse['status'] = true;

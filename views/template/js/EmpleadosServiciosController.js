@@ -188,7 +188,7 @@ var diff = fecha2.diff(fecha1, 'm'); // Diff in hours
 console.log(diff);
 
 
-var hora1 = moment("07:30:00", "HH:mm:ss");
+var hora1 = moment("06:10:00", "HH:mm:ss");
 var hora2 = moment("07:25:00", "HH:mm:ss");
 
 var diffhora = hora2.diff(hora1, 'm'); // Diff in hours
