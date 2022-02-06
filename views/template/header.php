@@ -102,6 +102,12 @@
                 <span class="nav-link-text">Servicios a Realizar</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE_URL ?>views/reportes/">
+                <i class="ni ni-briefcase-24 text-blue"></i>
+                <span class="nav-link-text">Reportes</span>
+              </a>
+            </li>
             <?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE_URL ?>views/empleadoservicio/">
