@@ -17,7 +17,13 @@
         <div class="col">
           <div class="card">
             <!-- Card header -->
-            <div class="card-header"><h3 class="mb-0">Servicios<button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Nuevo Servicio</button></h3></div>
+            <div class="card-header"><h3 class="mb-0">Servicios
+                <div class="float-right">
+                    <button type="button" onclick="modalagregar()" class="btn btn-primary">Clientes</button>
+                    <button type="button" onclick="modalagregar()" class="btn btn-success">Empleados</button>
+                    <button type="button" onclick="modalagregar()" class="btn btn-info">Servicios</button>
+                </div>
+        </h3></div>
             <div class="table-responsive py-4">
             <div id="chart"></div>
           </div>
