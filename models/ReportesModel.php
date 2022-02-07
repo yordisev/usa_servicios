@@ -14,3 +14,18 @@ function llamarreporteEmpleados(){
     }
     return $datos;
     }
+
+
+    function llamarreporteServicios($json){
+      require_once('../config/config.php');
+      $query = mysqli_query($mysqli,"SELECT se.nombre, COUNT(s.servicio) AS servicios
+      FROM servicios_a_realizar s
+      INNER JOIN servicios se ON s.servicio=se.id_servicio
+      WHERE s.fecha_inicio BETWEEN '$json->fecha_ini' AND '$json->fecha_fin'
+      GROUP BY s.servicio");
+      $datos = array();
+      while ($row = $query->fetch_assoc()) {
+        $datos[]= $row;
+      }
+      return $datos;
+      }

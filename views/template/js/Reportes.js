@@ -102,7 +102,131 @@ function reportesempleados() {
     });
 }
 
-reportesempleados();
+
+
+function reportesempleadosver(){
+    reportesempleados();
+    $('#reportesempleadosver').show();
+    $('#ReporteServiciosver').hide();
+    $('#fechasseleccionarservicios').hide();
+}
+
+
+
+function ReporteServiciosver(){
+    $('#reportesempleadosver').hide();
+    $('#ReporteServiciosver').show();
+    $('#fechasseleccionarservicios').show();
+}
+
+function ReporteServicios() {
+    var fechas = {
+        fecha_ini: document.getElementsByName('fecha_ini')[0].value,
+        fecha_fin: document.getElementsByName('fecha_fin')[0].value
+    }
+    $.ajax({
+        method: "POST",
+        datatype: "json",
+        data: {
+            'function': 'reportesservicios',
+            'datos': JSON.stringify(fechas)
+        },
+        url: "/usa_servicios/controllers/Reportes.php",
+    }).then(function (response) {
+        var datos = JSON.parse(response);
+        var nombres = [];
+        var nservicios = [];
+
+        let totaldatos = datos.data;
+        for (const datost of totaldatos) {
+            nombres.push(datost.nombre);
+            nservicios.push(datost.servicios);
+        }
+
+        var options = {
+            series: [{
+                name: 'Total el mes',
+                data: nservicios
+            }],
+            chart: {
+                height: 350,
+                type: 'bar',
+                width: 950
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    dataLabels: {
+                        position: 'center', // top, center, bottom
+                    },
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                // formatter: function(val) {
+                //     return val + "%";
+                // },
+                offsetY: -20,
+                style: {
+                    fontSize: '20px',
+                    colors: ["#FFFFFF"]
+                }
+            },
+
+            xaxis: {
+                categories: nombres,
+                position: 'top',
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                crosshairs: {
+                    fill: {
+                        type: 'gradient',
+                        gradient: {
+                            colorFrom: '#D8E3F0',
+                            colorTo: '#BED1E6',
+                            stops: [0, 100],
+                            opacityFrom: 0.4,
+                            opacityTo: 0.5,
+                        }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                }
+            },
+            yaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false,
+                },
+                labels: {
+                    show: false,
+                    // formatter: function(val) {
+                    //     return val + "%";
+                    // }
+                }
+
+            },
+            title: {
+                text: 'Total Servicios Requeridos',
+                floating: true,
+                offsetY: 330,
+                align: 'center',
+                style: {
+                    color: '#11cdef'
+                }
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#chart1"), options);
+        chart.render();
+    });
+}
 
 // var options = {
 //     series: [{
