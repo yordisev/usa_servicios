@@ -111,7 +111,7 @@ function reportesempleadosver(){
     $('#fechasseleccionarservicios').hide();
 }
 
-
+reportesempleadosver();
 
 function ReporteServiciosver(){
     $('#reportesempleadosver').hide();
