@@ -94,7 +94,7 @@ function TablaServiciosaRealizar() {
         "columns": [
 
             { "data": "agregarempleados" },
-            { "data": "cliente" },
+            // { "data": "cliente" },
             { "data": "nombre" },
             { "data": "fecha_inicio" },
             { "data": "fecha_fin" },

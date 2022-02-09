@@ -17,6 +17,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header"><h3 class="mb-0">Agregar Cliente a Servicio<button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Agregar</button></h3></div>
+            <div class="card-body">
             <div class="table-responsive py-4">
               <table class="table table-flush" id="TablaServiciosaRealizarcliente">
                 <thead class="thead-light">
@@ -31,6 +32,7 @@
                 </thead>
                
               </table>
+            </div>
             </div>
           </div>
           </div>

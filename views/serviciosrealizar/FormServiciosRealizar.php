@@ -63,6 +63,12 @@
                      <input type="text" class="form-control" value="<?php echo $_GET["cliente"]; ?>" name="clienteservicio" id="clienteservicio">
                    </div>
                    </div>
+                 <div class="col-md-6">
+                 <div class="form-group">
+                     <label><strong>Id de este Servicio</strong></label>
+                     <input type="text" class="form-control"  name="idservicorealizar" id="idservicorealizar">
+                   </div>
+                   </div>
                </div>
 
                <div class="text-center">

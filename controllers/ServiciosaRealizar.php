@@ -97,7 +97,7 @@ function ListarServiciosarealizar(){
 						$arrservicios[$i]["estado_servicio"] = '<span class="badge badge-danger">Inactivo</span>';
 					}
 
-                    $btnView = '<a class="btn btn-success btn-sm" href="asignarempleados.php?id_servicio_r='.$arrservicios[$i]['id_ser_rea'].'" title="Agregar Empleado">Agregar Empleados</a>';
+                    $btnView = '<button class="btn btn-success btn-sm" onClick="asignarunempleado(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Agregar Empleado">Agregar Empleados</button>';
                     $btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="editardatosservicio(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
                     $btnAct = '<button class="btn btn-info  btn-sm btnEditUsuario" onClick="Deshabilitarservicioterminado(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
 						
