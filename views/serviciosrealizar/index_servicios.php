@@ -2,6 +2,7 @@
 	require "../template/header.php";
   if($_SESSION['nivel'] == '1'){
  ?>
+
 <div class="header bg-primary pb-6">
       <div class="container-fluid">
         <div class="header-body">
@@ -16,15 +17,20 @@
         <div class="col">
           <div class="card">
             <!-- Card header -->
-            <div class="card-header"><h3 class="mb-0">Agregar Cliente a Servicio<button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Agregar</button></h3></div>
+            <div class="card-header"><h3 class="mb-0">Servicios a Realizar<button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Agregar Servicios</button></h3></div>
+            <?php include("FormServiciosRealizar.php");?>
+            <span id="id_servicio_a_realizar_del_cliente"><?php echo $_GET["id_servicio_del_cliente"]; ?></span>
             <div class="table-responsive py-4">
-              <table class="table table-flush" id="TablaServiciosaRealizarcliente">
+              <table class="table table-flush" id="TablaServiciosaRealizar">
                 <thead class="thead-light">
                 <tr>
-                                                <th>AGREGARSERVICIOS</th>
-                                                <th>DOCUMENTO</th>
-                                                <th>NOMBRE</th>
-                                                <th>FECHA</th>
+                                                <th>AGREGAREMPLEADOS</th>
+                                                <th>CLIENTE</th>
+                                                <th>SERVICIO</th>
+                                                <th>FECHA INICIO</th>
+                                                <th>FECHA FIN</th>
+                                                <th>TOTAL A PAPGAR</th>
+                                                <th>FECHA DE REGISTRO</th>
                                                 <th>ESTADO</th>
                                                 <th>ACCIONES</th>
                                             </tr>

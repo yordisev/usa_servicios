@@ -5,6 +5,39 @@ $function = $_POST['function'];
 $function();
 
 
+function Listarid_servicio_del_cliente(){
+    require_once('../models/ServiciosarealizarModel.php');
+
+		$arrservicios = lista_servicios_por_cliente();
+		if(!empty($arrservicios)){
+			for ($i=0; $i < count($arrservicios) ; $i++) { 
+				   $btnView = "";
+					$btnEdit = "";
+
+					if($arrservicios[$i]["estado"] == "A")
+					{
+						$arrservicios[$i]["estado"] = '<span class="badge badge-primary">Activo</span>';
+					}else{
+						$arrservicios[$i]["estado"] = '<span class="badge badge-danger">Inactivo</span>';
+					}
+
+                    $btnView = '<a class="btn btn-success btn-sm" href="index_servicios.php?id_servicio_del_cliente='.$arrservicios[$i]['id_servicio_cliente'].'&cliente='.$arrservicios[$i]['cliente'].'" title="Agregar Empleado">Agregar Servicios</a>';
+                    $btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="editardatosservicio(' . $arrservicios[$i]['id_servicio_cliente'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
+                    
+
+                    $arrservicios[$i]["agregarservicios"] = '<div class="text-center">'.$btnView.'</div>';
+                        $arrservicios[$i]["options"] = '<div class="text-center">'.$btnEdit.'</div>';
+                    }
+
+			$arrResponse["data"] = $arrservicios;		
+		}
+		echo json_encode($arrResponse);
+		die();
+}
+
+
+
+
 function llamarclientes(){
     require_once('../models/ServiciosarealizarModel.php');
                 $arraData = llamartodoslosclientes();
@@ -49,8 +82,8 @@ function Obtenerdatodeservicio(){
 
 function ListarServiciosarealizar(){
     require_once('../models/ServiciosarealizarModel.php');
-
-		$arrservicios = ListaServiciosRealizar();
+    $json = json_decode($_POST['datos']);
+		$arrservicios = ListaServiciosRealizar($json);
 		if(!empty($arrservicios)){
 			for ($i=0; $i < count($arrservicios) ; $i++) { 
 				   $btnView = "";
@@ -85,7 +118,7 @@ function realizarnuevoservico()
 {
     require_once('../models/ServiciosarealizarModel.php');
     $json = json_decode($_POST['datos']);
-    if($json->clienteservicio != '' && $json->servicionombre != '' && $json->fechainicio != '' && $json->horainicio != '' && $json->idservicorealizar != ''){
+    if($json->id_servico_cliente != '' && $json->clienteservicio != '' && $json->servicionombre != '' && $json->fechainicio != '' && $json->horainicio != ''){
         $response = Realizaresteservicio($json);
         echo $response;
     }else{

@@ -1,6 +1,37 @@
+TablaServiciosaRealizarcliente();
 TablaServiciosaRealizar();
 llamarclientes();
 llamarservicios();
+
+function TablaServiciosaRealizarcliente() {
+    document.querySelector("#TablaServiciosaRealizarcliente");
+    var table = $("#TablaServiciosaRealizarcliente").DataTable({
+        "aProcessing": true,
+        "aServerSide": true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+        },
+        "ajax": {
+            'type': 'POST',
+            "data": {
+                'function': 'Listarid_servicio_del_cliente',
+            },
+            "url": "/usa_servicios/controllers/ServiciosaRealizar.php",
+
+        },
+        "columns": [
+
+            { "data": "agregarservicios" },
+            { "data": "cliente" },
+            { "data": "clientenombre" },
+            { "data": "fecha" },
+            { "data": "estado" },
+            { "data": "options" },
+        ]
+    });
+    $('#TablaServiciosaRealizarcliente > tbody').html(table);
+}
+
 
 function llamarclientes() {
     $.ajax({
@@ -41,6 +72,9 @@ function llamarservicios() {
 }
 
 function TablaServiciosaRealizar() {
+    var arrdatos = {
+        id_servicio_a_realizar_del_cliente: $("#id_servicio_a_realizar_del_cliente").html(),
+    };
     document.querySelector("#TablaServiciosaRealizar");
     var table = $("#TablaServiciosaRealizar").DataTable({
         "aProcessing": true,
@@ -52,6 +86,7 @@ function TablaServiciosaRealizar() {
             'type': 'POST',
             "data": {
                 'function': 'ListarServiciosarealizar',
+                datos: JSON.stringify(arrdatos),
             },
             "url": "/usa_servicios/controllers/ServiciosaRealizar.php",
 
@@ -74,29 +109,9 @@ function TablaServiciosaRealizar() {
 
 
 
-function ValidarForm(nuevoservicio, tipo) {
-    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var exprNum = /^([0-9])*$/;
-    var Validador = false;
-    if (tipo == 1) {
-        document.querySelectorAll("#registratnuevoservicio .form-control").forEach(e => {
-            if (!e.value) {
-                Validador = true;
-            }
-        });
-    } else {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Oops...',
-            text: 'Debe diligenciar todos los campos!',
-        });
-        return false;
-    }
-    return true;
-}
-
 function GuardarServiciorealizar() {
     var nuevoservicio = {
+        id_servico_cliente: document.getElementsByName('id_servico_cliente')[0].value,
         clienteservicio: document.getElementsByName('clienteservicio')[0].value,
         servicionombre: document.getElementsByName('servicionombre')[0].value,
         fechainicio: document.getElementsByName('fechainicio')[0].value,
@@ -104,12 +119,7 @@ function GuardarServiciorealizar() {
         fechafin: document.getElementsByName('fechafin')[0].value,
         horafin: document.getElementsByName('horafin')[0].value,
     }
-    if (ValidarForm(nuevoservicio, 1)) {
-        Swal.fire({
-            title: 'Cargando',
-        });
-        Swal.showLoading();
-        setTimeout(() => {
+  
             $.ajax({
                 method: 'POST',
                 datatype: 'json',
@@ -141,9 +151,7 @@ function GuardarServiciorealizar() {
                     });
                 }
             });
-        }, 1000);
-
-    }
+      
 }
 
 function modalagregar() {

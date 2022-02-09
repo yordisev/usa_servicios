@@ -13,22 +13,11 @@
            <div class="modal-body">
              <form id="registratnuevoservicio" class="registratnuevoservicio">
                <div class="row">
-                     <!-- <label><strong>FECHA DE INICIO</strong></label> -->
-                     <input type="hidden" class="form-control" name="idservicorealizar" id="idservicorealizar">
                    
-                 <div class="col-md-6">
-                   <div class="form-group">
-                     <label><strong>CLIENTE</strong></label>
-                     <select class="form-control" name="clienteservicio" id="clienteservicio">
-                       <!-- <option value="" readonly>Seleccionar Cliente</option> -->
-                     </select>
-                   </div>
-                 </div>
-                 <div class="col-md-6">
+                 <div class="col-md-12">
                  <div class="form-group">
                      <label><strong>SERVICIO</strong></label>
                      <select class="form-control" name="servicionombre" id="servicionombre">
-                       <!-- <option value="" readonly>Seleccionar Servicio</option> -->
                      </select>
                    </div>
                  </div>
@@ -58,6 +47,20 @@
                  <div class="form-group">
                      <label><strong>HORA DE FINALIZACION</strong></label>
                      <input type="time" class="form-control" name="horafin" id="horafin">
+                   </div>
+                   </div>
+               </div>
+               <div class="row">
+               <div class="col-md-6">
+                   <div class="form-group">
+                     <label><strong>ID DEL SEVICIO</strong></label>
+                     <input type="text" class="form-control" value="<?php echo $_GET["id_servicio_del_cliente"]; ?>" name="id_servico_cliente" id="id_servico_client">
+                   </div>
+                 </div>
+                 <div class="col-md-6">
+                 <div class="form-group">
+                     <label><strong>CLIENTE</strong></label>
+                     <input type="text" class="form-control" value="<?php echo $_GET["cliente"]; ?>" name="clienteservicio" id="clienteservicio">
                    </div>
                    </div>
                </div>
