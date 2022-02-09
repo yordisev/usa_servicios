@@ -18,8 +18,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header"><h3 class="mb-0">Servicios a Realizar<button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Agregar Servicios</button></h3></div>
-            <?php include("FormServiciosRealizar.php");?>
-            <?php include("asignarempleados.php");?>
+            
             <span id="id_servicio_a_realizar_del_cliente" style="display: none;"><?php echo $_GET["id_servicio_del_cliente"]; ?></span>
             <div class="card-body"> 
             <div class="table-responsive py-4">
@@ -44,6 +43,8 @@
           </div>
           </div>
           </div>
+          <?php include("FormServiciosRealizar.php");?>
+            <?php include("asignarempleados.php");?>
    
 <?php 
  } else {

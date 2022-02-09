@@ -11,8 +11,6 @@
            </div>
            <div class="modal-body">
         <div class="col-lg-12">
-            <div class="card">
-                <?php include("FormActEmp.php");?>
                 <div class="table-responsive py-4">
                     <!-- <div style="width:auto; height:380px; overflow:auto;"> -->
                     <table class="table table-flush" id="tablaempleadosasignados">
@@ -33,9 +31,8 @@
                     </table>
                     <!-- </div> -->
                 </div>
-            </div>
         </div>
-
+        <?php include("FormActEmp.php");?>
         </div>
 
 </div>
