@@ -1,45 +1,17 @@
-<?php
-require "../template/header.php";
-?>
-
-<div class="header bg-primary pb-6">
-    <div class="container-fluid">
-        <div class="header-body">
-
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid mt--6">
-    <div class="row card-wrapper">
-        <div class="col-lg-4">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card bg-gradient-info border-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <span class="h3 font-weight-bold mb-0 text-white">ADORACION Y ORACION</span>
-                                    <span class="h2 font-weight-bold mb-0 text-white"> ({{totalesporservicio.Adoracion}})</span>
-                                    <span id="id_servicio_a_realizar" style="display: none;"><?php echo $_GET["id_servicio_r"]; ?></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ------------------------------------------------------------------------------- -->
-        </div>
-        <div class="col-lg-8">
+<div class="card">
+   <div class="row">
+     <div class="modal fade" id="modal-add-listarempleadosaesteservicio" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+       <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h6 class="modal-title" id="modal-title-default">Actualizar Tiempo Empleado</h6>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">×</span>
+             </button>
+           </div>
+           <div class="modal-body">
+        <div class="col-lg-12">
             <div class="card">
-                <!-- Card header -->
-                <div class="card-header">
-                            <h3 class="mb-0"> <a type="button" class="btn btn-danger float-right" href="javascript:history.back()">Atras</a>
-                            <button class="btn btn-success float-left" onclick="asignarunempleado('<?php echo $_GET['id_servicio_r']; ?>')">Asignar Empleados</button></h3>
-                       
-
-                </div>
                 <?php include("FormActEmp.php");?>
                 <div class="table-responsive py-4">
                     <!-- <div style="width:auto; height:380px; overflow:auto;"> -->
@@ -56,16 +28,20 @@ require "../template/header.php";
                                 <th>ESTADO</th>
                             </tr>
                         </thead>
+                        <tbody>
+                    </tbody>
                     </table>
                     <!-- </div> -->
                 </div>
             </div>
         </div>
 
-    </div>
+        </div>
 
-    <?php
-    require "../template/footer.php";
-    ?>
+</div>
+</div>
+</div>
 
-    <script src="../template/js/AsignarEmpleadosController.js"></script>
+</div>
+
+</div>

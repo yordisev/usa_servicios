@@ -89,6 +89,7 @@ function ListarServiciosarealizar(){
 				   $btnView = "";
 					$btnEdit = "";
 					$btnAct = "";
+					$empleados = "";
 
 					if($arrservicios[$i]["estado_servicio"] == "A")
 					{
@@ -100,11 +101,13 @@ function ListarServiciosarealizar(){
                     $btnView = '<button class="btn btn-success btn-sm" onClick="asignarunempleado(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Agregar Empleado">Agregar Empleados</button>';
                     $btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="editardatosservicio(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
                     $btnAct = '<button class="btn btn-info  btn-sm btnEditUsuario" onClick="Deshabilitarservicioterminado(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Editar Empleado"><i class="ni ni-settings"></i></button>';
+                    $empleados = '<button class="btn btn-danger  btn-sm btnEditUsuario" onClick="tablaempleadosasignados(' . $arrservicios[$i]['id_ser_rea'] . ')" title="Editar Empleado">Ver Empleados</button>';
 						
 				
 				
                     $arrservicios[$i]["agregarempleados"] = '<div class="text-center">'.$btnView.'</div>';
                         $arrservicios[$i]["options"] = '<div class="text-center">'.$btnEdit.' '.$btnAct.'</div>';
+                        $arrservicios[$i]["verempleados"] = '<div class="text-center">'.$empleados.'</div>';
                     }
 			// $arrResponse['status'] = true;
 			$arrResponse["data"] = $arrservicios;		

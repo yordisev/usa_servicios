@@ -1,5 +1,3 @@
-tablaempleadosasignados();
-
 
 function llamarempleados() {
     $.ajax({
@@ -20,65 +18,106 @@ function llamarempleados() {
     });
 }
 
-function tablaempleadosasignados() {
-    var arrdatos = {
-        id_servicio_a_realizar: $("#id_servicio_a_realizar").html(),
+function tablaempleadosasignados(iddelservicioempleado) {
+    var historicoid = {
+        id_servicio_a_realizar: iddelservicioempleado,
     };
-    var table = $("#tablaempleadosasignados").DataTable({
-        "aProcessing": true,
-        "aServerSide": true,
-        "language": {
-                "sProcessing":     "Procesando...",
-                            "sLengthMenu":     "Mostrar _MENU_ registros",
-                            "sZeroRecords":    "No se encontraron resultados",
-                            "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
-                            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                            "sInfoPostFix":    "",
-                            "sSearch":         "Buscar:",
-                            "sUrl":            "",
-                            "sInfoThousands":  ",",
-                            "sLoadingRecords": "Sin Datos Por Favor Agregar Empleados",
-                            "oPaginate": {
-                                "sFirst":    "Primero",
-                                "sLast":     "Último",
-                                "sNext":     ">",
-                                "sPrevious": "<"
-                            },
-                            "oAria": {
-                                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                            },
-                            "buttons": {
-                                "copy": "Copiar",
-                                "colvis": "Visibilidad"
-                            }
-        
+    $.ajax({
+        method: "POST",
+        datatype: "json",
+        data: {
+            function: "ListarEmpleadosalservicio",
+            datos: JSON.stringify(historicoid),
         },
-        "ajax": {
-            'type': 'POST',
-            "data": {
-                'function': 'ListarEmpleadosalservicio',
-                datos: JSON.stringify(arrdatos),
-            },
-            "url": "/usa_servicios/controllers/EmpleadosAsignados.php",
+        url: "/usa_servicios/controllers/EmpleadosAsignados.php",
+    }).then(function(response) {
+        const tabla = document.querySelector("#tablaempleadosasignados tbody");
+        var datos = JSON.parse(response);
+        console.log(datos);
+        if (datos.status == true) {
+            while (tabla.firstChild) {
+                tabla.removeChild(tabla.firstChild);
+            }
 
-        },
-        "columns": [
-
-            { "data": "options" ,"defaultContent": "<i>Not set</i>"},
-            { "data": "empleado" ,"defaultContent": "<i>Not set</i>"},
-            { "data": "fecha_inicio" ,"defaultContent": "<i>Not set</i>"},
-            { "data": "hora_inicio" ,"defaultContent": "<i>Not set</i>"},
-            { "data": "fecha_fin" ,"defaultContent": "<i>Not set</i>"},
-            { "data": "hora_fin" ,"defaultContent": "<i>Not set</i>"},
-            { "data": "fecha" ,"defaultContent": "<i>Not set</i>"},
-            { "data": "estadoservi","defaultContent": "<i>Not set</i>" },
-            
-        ]
+            for (var i = 0; i < datos.data.length; i++) {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+            <td scope="col">${datos.data[i].options}</td>
+            <td scope="col">${datos.data[i].empleado}</td>
+            <td scope="col">${datos.data[i].fecha_inicio}</td>
+            <td scope="col">${datos.data[i].hora_inicio}</td>
+            <td scope="col">${datos.data[i].fecha_fin}</td>
+            <td scope="col">${datos.data[i].hora_fin}</td>
+            <td scope="col">${datos.data[i].fecha}</td>
+            <td scope="col">${datos.data[i].estadoservi}</td>
+        `;
+                tabla.appendChild(row);
+            }
+        }
+        $("#modal-add-listarempleadosaesteservicio").modal("show");
     });
 }
+
+// function tablaempleadosasignados(iddelservicioempleado) {
+//     $('#modal-add-listarempleadosaesteservicio').modal('show');
+//     var arrdatos = {
+//         id_servicio_a_realizar: iddelservicioempleado,
+//     };
+//     var table = $("#tablaempleadosasignados").DataTable({
+//         "aProcessing": true,
+//         "aServerSide": true,
+//         "language": {
+//                 "sProcessing":     "Procesando...",
+//                             "sLengthMenu":     "Mostrar _MENU_ registros",
+//                             "sZeroRecords":    "No se encontraron resultados",
+//                             "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+//                             "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+//                             "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+//                             "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+//                             "sInfoPostFix":    "",
+//                             "sSearch":         "Buscar:",
+//                             "sUrl":            "",
+//                             "sInfoThousands":  ",",
+//                             "sLoadingRecords": "Sin Datos Por Favor Agregar Empleados",
+//                             "oPaginate": {
+//                                 "sFirst":    "Primero",
+//                                 "sLast":     "Último",
+//                                 "sNext":     ">",
+//                                 "sPrevious": "<"
+//                             },
+//                             "oAria": {
+//                                 "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+//                                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+//                             },
+//                             "buttons": {
+//                                 "copy": "Copiar",
+//                                 "colvis": "Visibilidad"
+//                             }
+        
+//         },
+//         "ajax": {
+//             'type': 'POST',
+//             "data": {
+//                 'function': 'ListarEmpleadosalservicio',
+//                 datos: JSON.stringify(arrdatos),
+//             },
+//             "url": "/usa_servicios/controllers/EmpleadosAsignados.php",
+
+//         },
+//         "columns": [
+
+//             { "data": "options" ,"defaultContent": "<i>Not set</i>"},
+//             { "data": "empleado" ,"defaultContent": "<i>Not set</i>"},
+//             { "data": "fecha_inicio" ,"defaultContent": "<i>Not set</i>"},
+//             { "data": "hora_inicio" ,"defaultContent": "<i>Not set</i>"},
+//             { "data": "fecha_fin" ,"defaultContent": "<i>Not set</i>"},
+//             { "data": "hora_fin" ,"defaultContent": "<i>Not set</i>"},
+//             { "data": "fecha" ,"defaultContent": "<i>Not set</i>"},
+//             { "data": "estadoservi","defaultContent": "<i>Not set</i>" },
+            
+//         ]
+//     });
+// }
 
 
 function asignarunempleado(iddelservicioagregar) {

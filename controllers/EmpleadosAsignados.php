@@ -46,8 +46,8 @@ function ListarEmpleadosalservicio(){
 				
                         $arrservi[$i]["options"] = '<div class="text-center">'.$btnView.' '.$btnEdit.'</div>';
                     }
-			// $arrResponse['status'] = true;
-			$arrResponse["data"] = $arrservi;		
+                    $arrResponse = array('status' => true, 'data' => $arrservi);
+			// $arrResponse["data"] = $arrservi;		
 		}else{
             $arrResponse = [];
         }
