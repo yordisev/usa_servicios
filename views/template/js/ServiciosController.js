@@ -1,6 +1,5 @@
 TablaServiciosaRealizarcliente();
 TablaServiciosaRealizar();
-llamarclientes();
 llamarservicios();
 
 function TablaServiciosaRealizarcliente() {
@@ -50,6 +49,61 @@ function llamarclientes() {
             }
         }
     });
+}
+
+function modalagregarclienteservicio() {
+    llamarclientes();
+    Swal.fire({
+        title: 'Seleccione Cliente',
+        html: '<div class="form-group col-md-12">' +
+            '<select class="form-control form-control-lg" name="clienteservicio" id="clienteservicio">' +
+            '<option value="" readonly>Seleccionar Clientes</option>' +
+            '</select>' +
+            '</div>',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var EditarEstado = {
+                clienteservicio: document.getElementsByName('clienteservicio')[0].value,
+            }
+            console.log(EditarEstado);
+            $.ajax({
+                method: 'POST',
+                datatype: 'json',
+                data: {
+                    'function': 'Agregarclienteaservicios',
+                    'datos': JSON.stringify(EditarEstado)
+                },
+                url: '/usa_servicios/controllers/EmpleadosAsignados.php',
+            }).then(function(response) {
+                if (response == 'Exito') {
+                    Swal.fire({
+                        title: 'Notificacion!',
+                        position: 'center',
+                        icon: 'success',
+                        text: 'Cliente Agregado exitosamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function() {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Notificacion!',
+                        position: 'center',
+                        icon: 'error',
+                        text: 'Ocurrio un error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+        }
+    });
+
 }
 
 function llamarservicios() {
