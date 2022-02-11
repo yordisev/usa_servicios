@@ -111,7 +111,9 @@ function ListarServiciosarealizar(){
                     }
 			// $arrResponse['status'] = true;
 			$arrResponse["data"] = $arrservicios;		
-		}
+		}else{
+            $arrResponse = [];
+        }
 		echo json_encode($arrResponse);
 		die();
 }
@@ -154,4 +156,19 @@ function Actualizarestado()
     }else{
         echo $response;
     }
+}
+
+
+function Agregarclienteaservicios()
+{
+    require_once('../models/ServiciosarealizarModel.php');
+    $json = json_decode($_POST['datos']);
+    if($json->clienteservicio != ''){
+        $response = Agregarclienteaserviciosnuevo($json);
+        echo $response;
+    }else{
+        echo $response;
+    }
+
+    
 }

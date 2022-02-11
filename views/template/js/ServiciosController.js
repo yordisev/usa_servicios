@@ -8,7 +8,33 @@ function TablaServiciosaRealizarcliente() {
         "aProcessing": true,
         "aServerSide": true,
         "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla =(",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Sin Datos Por Favor Agregar",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": ">",
+                "sPrevious": "<"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad"
+            }
+
         },
         "ajax": {
             'type': 'POST',
@@ -77,14 +103,14 @@ function modalagregarclienteservicio() {
                     'function': 'Agregarclienteaservicios',
                     'datos': JSON.stringify(EditarEstado)
                 },
-                url: '/usa_servicios/controllers/EmpleadosAsignados.php',
+                url: '/usa_servicios/controllers/ServiciosaRealizar.php',
             }).then(function(response) {
                 if (response == 'Exito') {
                     Swal.fire({
                         title: 'Notificacion!',
                         position: 'center',
                         icon: 'success',
-                        text: 'Cliente Agregado exitosamente',
+                        text: 'Nuevo Servicio para cliente Agregado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
                     }).then(function() {
@@ -134,7 +160,33 @@ function TablaServiciosaRealizar() {
         "aProcessing": true,
         "aServerSide": true,
         "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla =(",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Sin Datos Por Favor Agregar",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": ">",
+                "sPrevious": "<"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad"
+            }
+
         },
         "ajax": {
             'type': 'POST',

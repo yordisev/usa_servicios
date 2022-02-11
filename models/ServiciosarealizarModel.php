@@ -112,3 +112,19 @@ if ($ejecutar->affected_rows){
 
 return $respuesta;
 }
+
+
+function Agregarclienteaserviciosnuevo($json)
+{
+    require_once('../config/config.php');
+    $query = $mysqli->prepare("INSERT INTO servicios_clientes (cliente,fecha,estado) VALUES (?,NOW(),'A')");
+    $query->bind_param("s",$json->clienteservicio);
+    $query->execute();
+    $id_registro = $query->insert_id;
+    if ($id_registro > 0) {
+        $msg = 'Exito';
+    } else {
+        $msg = 'Error';
+    }
+    return $msg;
+}

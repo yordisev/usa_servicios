@@ -17,7 +17,11 @@
         <div class="col">
           <div class="card">
             <!-- Card header -->
-            <div class="card-header"><h3 class="mb-0">Servicios a Realizar<button type="button" onclick="modalagregar()" class="btn btn-primary float-right">Agregar Servicios</button></h3></div>
+            <div class="card-header"><h3 class="mb-0">Servicios a Realizar
+              <button type="button" onclick="modalagregar()" class="btn btn-primary">Agregar Servicios</button>
+            <a type="button" class="btn btn-danger float-right" href="javascript:history.back()">Atras</a>
+            </h3>
+          </div>
             
             <span id="id_servicio_a_realizar_del_cliente" style="display: none;"><?php echo $_GET["id_servicio_del_cliente"]; ?></span>
             <div class="card-body"> 

@@ -18,6 +18,7 @@ function ListarEmpleadosalservicio(){
                     $fechainicio = new DateTime($arrservi[$i]['fecha_inicio']);
                     $fechafin = new DateTime($arrservi[$i]['fecha_fin']);
                     $totaldias = $fechainicio->diff($fechafin);
+                    
 
 					if($arrservi[$i]["estadoservi"] == "A" || $arrservi[$i]["estadoservi"] == "I")
 					{
@@ -37,9 +38,18 @@ function ListarEmpleadosalservicio(){
                         $arrservi[$i]["options"] = '<button class="btn btn-default  btn-sm"  title="Trabajoterminado"><i class="ni ni-bell-55"></i></button>';
                     }
                     
+                    
+                    if ($fechainicio <= $fechafin) {
+                            $arrservi[$i]["datosdias"] = '<div class="text-center">'.$totaldias->days.'</div>';
+                        }else{
+                            $arrservi[$i]["datosdias"] = "0";
+                        }
 
-                        $arrservi[$i]["datosdias"] = '<div class="text-center">'.$totaldias->days.'</div>';
-                        $arrservi[$i]["datoshoras"] = '<div class="text-center">'.$totalhoras->format('%H horas %i minutos').PHP_EOL.'</div>';
+                        if ($horainicio <= $horafin) {
+                            $arrservi[$i]["datoshoras"] = '<div class="text-center">'.$totalhoras->format('%H horas %i minutos').PHP_EOL.'</div>';
+                        }else{
+                            $arrservi[$i]["datoshoras"] = "0";
+                        }
 
                     }
 			// $arrResponse['status'] = true;
