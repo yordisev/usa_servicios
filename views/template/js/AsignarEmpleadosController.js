@@ -50,6 +50,8 @@ function tablaempleadosasignados(iddelservicioempleado) {
             <td scope="col">${datos.data[i].hora_fin}</td>
             <td scope="col">${datos.data[i].fecha}</td>
             <td scope="col">${datos.data[i].estadoservi}</td>
+            <td scope="col">${datos.data[i].datosdias}</td>
+            <td scope="col">${datos.data[i].datoshoras}</td>
         `;
                 tabla.appendChild(row);
             }

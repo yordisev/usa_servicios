@@ -1,7 +1,7 @@
 <div class="card">
    <div class="row">
      <div class="modal fade" id="modal-add-listarempleadosaesteservicio" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-       <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+       <div class="modal-dialog modal- modal-dialog-centered modal-xl" role="document">
          <div class="modal-content">
            <div class="modal-header">
              <h6 class="modal-title" id="modal-title-default">Actualizar Tiempo Empleado</h6>
@@ -24,6 +24,8 @@
                                 <th>HORA F</th>
                                 <th>FECHA</th>
                                 <th>ESTADO</th>
+                                <th>DIAS</th>
+                                <th>HORAS</th>
                             </tr>
                         </thead>
                         <tbody>

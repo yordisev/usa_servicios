@@ -30,6 +30,14 @@ function ListarEmpleadosalservicio(){
 				   $btnView = "";
 					$btnEdit = "";
 
+                    $horainicio = new DateTime($arrservi[$i]['hora_inicio']);
+                    $horafin = new DateTime($arrservi[$i]['hora_fin']);
+                    $totalhoras = $horainicio->diff($horafin);
+
+                    $fechainicio = new DateTime($arrservi[$i]['fecha_inicio']);
+                    $fechafin = new DateTime($arrservi[$i]['fecha_fin']);
+                    $totaldias = $fechainicio->diff($fechafin);
+
 					if($arrservi[$i]["estadoservi"] == "A")
 					{
 						$arrservi[$i]["estadoservi"] = '<span class="badge badge-primary">Activo</span>';
@@ -45,8 +53,23 @@ function ListarEmpleadosalservicio(){
 				
 				
                         $arrservi[$i]["options"] = '<div class="text-center">'.$btnView.' '.$btnEdit.'</div>';
+                   
+                        if ($fechainicio <= $fechafin) {
+                            $arrservi[$i]["datosdias"] = '<div class="text-center">'.$totaldias->days.'</div>';
+                        }else{
+                            $arrservi[$i]["datosdias"] = "0";
+                        }
+
+                        if ($horainicio <= $horafin) {
+                            $arrservi[$i]["datoshoras"] = '<div class="text-center">'.$totalhoras->format('%H horas %i minutos').PHP_EOL.'</div>';
+                        }else{
+                            $arrservi[$i]["datoshoras"] = "0";
+                        }
+                   
                     }
                     $arrResponse = array('status' => true, 'data' => $arrservi);
+
+
 			// $arrResponse["data"] = $arrservi;		
 		}else{
             $arrResponse = [];
