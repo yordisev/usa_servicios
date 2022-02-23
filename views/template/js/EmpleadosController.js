@@ -1,8 +1,8 @@
-if (document.querySelector("#tablalistadoempleados")) {
-    ListadoEmpleados();
-}
+// if (document.querySelector("#tablalistadoempleados")) {
+//     ListadoEmpleados();
+// }
 
-function ListadoEmpleados() {
+// function ListadoEmpleados() {
     var table = $("#tablalistadoempleados").DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -29,7 +29,7 @@ function ListadoEmpleados() {
         ]
     });
 
-}
+// }
 
 
 function ValidarForm(Empleado) {
@@ -184,6 +184,7 @@ function ActualizarEmpleado() {
                         timer: 1500
                     });
                     $('#modal-add-empleados').modal('hide');
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -282,9 +283,8 @@ function Deshabilitarempleado(idempleado) {
                         text: 'Registro Modificado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
-                    }).then(function() {
-                        location.reload();
                     });
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',

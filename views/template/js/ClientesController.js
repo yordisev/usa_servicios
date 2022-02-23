@@ -1,8 +1,8 @@
-if (document.querySelector("#tablalistadoclientes")) {
-    ListadoClientes();
-}
+// if (document.querySelector("#tablalistadoclientes")) {
+//     ListadoClientes();
+// }
 
-function ListadoClientes() {
+// function ListadoClientes() {
     var table = $("#tablalistadoclientes").DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -31,7 +31,7 @@ function ListadoClientes() {
         ]
     });
 
-}
+// }
 
 
 function ValidarForm(Cliente) {
@@ -193,6 +193,7 @@ function ActualizarCliente() {
                         timer: 1500
                     });
                     $('#modal-add-clientes').modal('hide');
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -298,9 +299,8 @@ function Deshabilitarcliente(idcliente) {
                         text: 'Registro Modificado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
-                    }).then(function() {
-                        location.reload();
                     });
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',

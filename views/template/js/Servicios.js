@@ -1,8 +1,8 @@
-TablaServicios();
+// TablaServicios();
 
 
-function TablaServicios() {
-    document.querySelector("#TablaServicios");
+// function TablaServicios() {
+//     document.querySelector("#TablaServicios");
     var table = $("#TablaServicios").DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -51,8 +51,8 @@ function TablaServicios() {
             { "data": "options" },
         ]
     });
-    $('#TablaServicios > tbody').html(table);
-}
+    // $('#TablaServicios > tbody').html(table);
+// }
 
 
 
@@ -119,6 +119,7 @@ function GuardarServicio() {
                     });
                     $('#nuevoservicio')[0].reset();
                     $('#modal-add-servicio').modal('hide');
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -210,6 +211,7 @@ function ActualizarServicio() {
                         timer: 1500
                     });
                     $('#modal-add-servicio').modal('hide');
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -265,9 +267,8 @@ function Deshabilitarservicio(id_servicio) {
                         text: 'Registro Modificado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
-                    }).then(function() {
-                        location.reload();
                     });
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
