@@ -1,14 +1,14 @@
-ListadoUsuarios();
+// ListadoUsuarios();
 
-function ListadoUsuarios() {
-    document.querySelector("#TablaUsuarios");
+// function ListadoUsuarios() {
+//     document.querySelector("#TablaUsuarios");
     var table = $("#TablaUsuarios").DataTable({
         "aProcessing": true,
         "aServerSide": true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
-        "ajax": {
+        ajax: {
             'type': 'POST',
             "data": {
                 'function': 'ListarUsuarios',
@@ -29,8 +29,8 @@ function ListadoUsuarios() {
             { "data": "options" },
         ]
     });
-    $('#TablaUsuarios > tbody').html(table);
-}
+//     $('#TablaUsuarios > tbody').html(table);
+// }
 
 
 function ValidarForm(User, tipo) {
@@ -109,7 +109,7 @@ function GuardarUsuario() {
                     $('#registrar_usuario')[0].reset();
                     jQuery.noConflict();
                     $('.bd-example-modal-lg').modal('hide');
-                    ListadoUsuarios();
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -212,6 +212,7 @@ function ActualizarUsuario() {
                         timer: 1500
                     });
                     $('#modal-add-usuario').modal('hide');
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -255,7 +256,7 @@ function fntBloquearUsuario(id) {
                             'Usuario ha sido bloqueado.',
                             'success'
                         );
-                        ListadoUsuarios();
+                        table.ajax.reload();
                     } else {
                         Swal.fire({
                             title: 'Notificacion!',

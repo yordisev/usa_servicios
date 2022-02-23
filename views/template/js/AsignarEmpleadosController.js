@@ -31,9 +31,9 @@ function tablaempleadosasignados(iddelservicioempleado) {
         },
         url: "/usa_servicios/controllers/EmpleadosAsignados.php",
     }).then(function(response) {
+        console.log(response);
         const tabla = document.querySelector("#tablaempleadosasignados tbody");
         var datos = JSON.parse(response);
-        console.log(datos);
         if (datos.status == true) {
             while (tabla.firstChild) {
                 tabla.removeChild(tabla.firstChild);
@@ -65,7 +65,11 @@ function tablaempleadosasignados(iddelservicioempleado) {
 //     var arrdatos = {
 //         id_servicio_a_realizar: iddelservicioempleado,
 //     };
-//     var table = $("#tablaempleadosasignados").DataTable({
+    
+//         // table2.destroy();
+//     // table2.ajax.reload();
+    
+//     var table2 = $("#tablaempleadosasignados").DataTable({
 //         "aProcessing": true,
 //         "aServerSide": true,
 //         "language": {
@@ -97,7 +101,7 @@ function tablaempleadosasignados(iddelservicioempleado) {
 //                             }
         
 //         },
-//         "ajax": {
+//         ajax: {
 //             'type': 'POST',
 //             "data": {
 //                 'function': 'ListarEmpleadosalservicio',
@@ -116,6 +120,8 @@ function tablaempleadosasignados(iddelservicioempleado) {
 //             { "data": "hora_fin" ,"defaultContent": "<i>Not set</i>"},
 //             { "data": "fecha" ,"defaultContent": "<i>Not set</i>"},
 //             { "data": "estadoservi","defaultContent": "<i>Not set</i>" },
+//             { "data": "datosdias","defaultContent": "<i>Not set</i>" },
+//             { "data": "datoshoras","defaultContent": "<i>Not set</i>" },
             
 //         ]
 //     });
@@ -159,9 +165,8 @@ function asignarunempleado(iddelservicioagregar) {
                         text: 'Empleado Agregado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
-                    }).then(function() {
-                        location.reload();
                     });
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -231,6 +236,11 @@ function ActualizarEmpleAsignado() {
                         timer: 1500
                     });
                     $('#modal-add-actualizarempleasignado').modal('hide');
+                    // $("#tablaempleadosasignados").dataTable().fnDestroy();
+                    var iddelservicioempleadoactualizado = $("#id_tiempo_ser_emple").val();
+                    tablaempleadosasignados(iddelservicioempleadoactualizado);
+                    // table2.destroy();
+                    // table2.ajax.reload();
                     
                 } else {
                     Swal.fire({

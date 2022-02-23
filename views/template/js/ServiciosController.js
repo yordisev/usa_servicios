@@ -1,10 +1,10 @@
-TablaServiciosaRealizarcliente();
-TablaServiciosaRealizar();
+// TablaServiciosaRealizarcliente();
+// TablaServiciosaRealizar();
 llamarservicios();
 
-function TablaServiciosaRealizarcliente() {
-    document.querySelector("#TablaServiciosaRealizarcliente");
-    var table = $("#TablaServiciosaRealizarcliente").DataTable({
+// function TablaServiciosaRealizarcliente() {
+//     document.querySelector("#TablaServiciosaRealizarcliente");
+    var table1 = $("#TablaServiciosaRealizarcliente").DataTable({
         "aProcessing": true,
         "aServerSide": true,
         "language": {
@@ -36,7 +36,7 @@ function TablaServiciosaRealizarcliente() {
             }
 
         },
-        "ajax": {
+        ajax: {
             'type': 'POST',
             "data": {
                 'function': 'Listarid_servicio_del_cliente',
@@ -54,8 +54,8 @@ function TablaServiciosaRealizarcliente() {
             { "data": "options" },
         ]
     });
-    $('#TablaServiciosaRealizarcliente > tbody').html(table);
-}
+//     $('#TablaServiciosaRealizarcliente > tbody').html(table);
+// }
 
 
 function llamarclientes() {
@@ -95,7 +95,6 @@ function modalagregarclienteservicio() {
             var EditarEstado = {
                 clienteservicio: document.getElementsByName('clienteservicio')[0].value,
             }
-            console.log(EditarEstado);
             $.ajax({
                 method: 'POST',
                 datatype: 'json',
@@ -113,9 +112,8 @@ function modalagregarclienteservicio() {
                         text: 'Nuevo Servicio para cliente Agregado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
-                    }).then(function() {
-                        location.reload();
                     });
+                    table1.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -151,11 +149,11 @@ function llamarservicios() {
     });
 }
 
-function TablaServiciosaRealizar() {
+// function TablaServiciosaRealizar() {
     var arrdatos = {
         id_servicio_a_realizar_del_cliente: $("#id_servicio_a_realizar_del_cliente").html(),
     };
-    document.querySelector("#TablaServiciosaRealizar");
+    // document.querySelector("#TablaServiciosaRealizar");
     var table = $("#TablaServiciosaRealizar").DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -188,7 +186,7 @@ function TablaServiciosaRealizar() {
             }
 
         },
-        "ajax": {
+        ajax: {
             'type': 'POST',
             "data": {
                 'function': 'ListarServiciosarealizar',
@@ -210,8 +208,8 @@ function TablaServiciosaRealizar() {
             { "data": "options" },
         ]
     });
-    $('#TablaServiciosaRealizar > tbody').html(table);
-}
+//     $('#TablaServiciosaRealizar > tbody').html(table);
+// }
 
 
 
@@ -246,6 +244,7 @@ function GuardarServiciorealizar() {
                     });
                     $('#registratnuevoservicio')[0].reset();
                     $('#modal-add-nuevoservicio').modal('hide');
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -366,6 +365,7 @@ function ActualizarServiciorealizar() {
                         timer: 1500
                     });
                     $('#modal-add-nuevoservicio').modal('hide');
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
@@ -421,9 +421,8 @@ function Deshabilitarservicioterminado(id_servicioterminado) {
                         text: 'Registro Modificado exitosamente',
                         showConfirmButton: false,
                         timer: 1500
-                    }).then(function() {
-                        location.reload();
                     });
+                    table.ajax.reload();
                 } else {
                     Swal.fire({
                         title: 'Notificacion!',
